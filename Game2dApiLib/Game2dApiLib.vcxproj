@@ -151,6 +151,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\AudioManager.h" />
+    <ClInclude Include="src\Command.h" />
+    <ClInclude Include="src\Controllable.h" />
+    <ClInclude Include="src\Game2dApiLib.h" />
+    <ClInclude Include="src\GraphManager.h" />
+    <ClInclude Include="src\Image.h" />
+    <ClInclude Include="src\Input.h" />
+    <ClInclude Include="src\InputGetter.h" />
+    <ClInclude Include="src\InputManager.h" />
+    <ClInclude Include="src\Screen.h" />
+    <ClInclude Include="src\Unique.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Controllable.cpp" />
+    <ClCompile Include="src\GraphManager.cpp" />
+    <ClCompile Include="src\InputManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,7 +5,7 @@
 
 namespace input
 {
-	class InputGetter : public Unique // Unique?
+	class InputGetter // Unique?
 	{
 	public:
 		InputGetter() {};

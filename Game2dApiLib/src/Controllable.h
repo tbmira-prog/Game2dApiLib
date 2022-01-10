@@ -18,10 +18,10 @@ namespace input
 
 		void HandleInput(const std::reference_wrapper <Input> input);
 
-		void SetCommandInput(std::reference_wrapper <Input> input, std::reference_wrapper <Command> command);
+		void SetCommandInput(const Input& input, const Command& command);
 
 	private:
-		std::unordered_map < std::unordered_map<std::reference_wrapper<Input>&, std::reference_wrapper<Command>& > commandMap; //std::unordered_map<std::reference_wrapper<Input>, std::reference_wrapper<Command>> commandMap;
+		std::unordered_map < std::reference_wrapper<Input>, std::reference_wrapper<Command> > commandMap;
 	};
 	// Os inputs e comandos irão ficar armazenados no objeto Controllable
 	// Eles devem ser referência por causa que Input e Command são classes polimórficas e virtuais puras

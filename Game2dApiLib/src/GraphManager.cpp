@@ -10,5 +10,5 @@ void GraphManager::UpdateScreen(const std::vector<std::reference_wrapper<Image>>
 	screen->Clear();
 
 	for (auto image = images.cbegin(); image != images.cend(); image++)
-		image->get().Print(screen->get());
+		image->get().Print(*screen);
 }

@@ -1,6 +1,8 @@
 #include "Controllable.h"
 using namespace input;
 
+#include <stdexcept>
+
 Controllable::Controllable() : commandMap()
 {
 
@@ -15,7 +17,7 @@ void Controllable::HandleInput(std::reference_wrapper <Input> input)
 {
 	try
 	{
-		commandMap.at(input)->Execute();
+		commandMap.at(input).get().Execute();
 	}
 	catch (const std::out_of_range& err)
 	{
@@ -23,7 +25,7 @@ void Controllable::HandleInput(std::reference_wrapper <Input> input)
 	}
 }
 
-void Controllable::SetCommandInput(std::reference_wrapper <Input> input, std::reference_wrapper <Command> command)
+void Controllable::SetCommandInput(const Input& input, const Command& command)
 {
 	commandMap.insert(input, command);
 }
