@@ -11,16 +11,18 @@
 
 namespace graph
 {
+	typedef std::vector<std::reference_wrapper<Image>> ImageVector;
+
 	class GraphManager : public Unique
 	{
 	public:
 		GraphManager(Screen&);
 		~GraphManager();
 
-		void UpdateScreen(std::vector<std::reference_wrapper<Image>> images);
+		void UpdateScreen(ImageVector images);
 
 	private:
-		std::unique_ptr<Screen> screen;
+		Screen& screen;
 
 	private:
 		GraphManager(const GraphManager&);

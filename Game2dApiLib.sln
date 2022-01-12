@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game2dApiLib", "Game2dApiLi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TerminalGame2dApiLi", "TerminalGame2dApiLi\TerminalGame2dApiLi.vcxproj", "{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TesteTerminal", "TesteTerminal\TesteTerminal.vcxproj", "{D32CBD00-7DFE-4B27-A78A-AC1B890DF15E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Release|x64.Build.0 = Release|x64
 		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Release|x86.ActiveCfg = Release|Win32
 		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Release|x86.Build.0 = Release|Win32
+		{D32CBD00-7DFE-4B27-A78A-AC1B890DF15E}.Debug|x64.ActiveCfg = Debug|x64
+		{D32CBD00-7DFE-4B27-A78A-AC1B890DF15E}.Debug|x64.Build.0 = Debug|x64
+		{D32CBD00-7DFE-4B27-A78A-AC1B890DF15E}.Debug|x86.ActiveCfg = Debug|Win32
+		{D32CBD00-7DFE-4B27-A78A-AC1B890DF15E}.Debug|x86.Build.0 = Debug|Win32
+		{D32CBD00-7DFE-4B27-A78A-AC1B890DF15E}.Release|x64.ActiveCfg = Release|x64
+		{D32CBD00-7DFE-4B27-A78A-AC1B890DF15E}.Release|x64.Build.0 = Release|x64
+		{D32CBD00-7DFE-4B27-A78A-AC1B890DF15E}.Release|x86.ActiveCfg = Release|Win32
+		{D32CBD00-7DFE-4B27-A78A-AC1B890DF15E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
