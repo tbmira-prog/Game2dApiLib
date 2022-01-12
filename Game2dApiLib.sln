@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game2dApiLib", "Game2dApiLib\Game2dApiLib.vcxproj", "{28DE3F9C-467E-4E46-ABDE-78153C43C79E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TerminalGame2dApiLi", "TerminalGame2dApiLi\TerminalGame2dApiLi.vcxproj", "{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{28DE3F9C-467E-4E46-ABDE-78153C43C79E}.Release|x64.Build.0 = Release|x64
 		{28DE3F9C-467E-4E46-ABDE-78153C43C79E}.Release|x86.ActiveCfg = Release|Win32
 		{28DE3F9C-467E-4E46-ABDE-78153C43C79E}.Release|x86.Build.0 = Release|Win32
+		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Debug|x64.ActiveCfg = Debug|x64
+		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Debug|x64.Build.0 = Debug|x64
+		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Debug|x86.ActiveCfg = Debug|Win32
+		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Debug|x86.Build.0 = Debug|Win32
+		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Release|x64.ActiveCfg = Release|x64
+		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Release|x64.Build.0 = Release|x64
+		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Release|x86.ActiveCfg = Release|Win32
+		{E61B1903-DFB3-4CEB-A935-8B1A701B0C58}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

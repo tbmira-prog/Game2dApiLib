@@ -17,7 +17,7 @@ namespace graph
 		GraphManager(Screen&);
 		~GraphManager();
 
-		void UpdateScreen(const std::vector<std::reference_wrapper<Image>>& images);
+		void UpdateScreen(std::vector<std::reference_wrapper<Image>> images);
 
 	private:
 		std::unique_ptr<Screen> screen;

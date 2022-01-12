@@ -5,7 +5,7 @@ GraphManager::GraphManager(Screen& newScreen) : Unique(), screen(&newScreen) {}
 
 GraphManager::~GraphManager() {}
 
-void GraphManager::UpdateScreen(const std::vector<std::reference_wrapper<Image>>& images)
+void GraphManager::UpdateScreen(std::vector<std::reference_wrapper<Image>> images)
 {
 	screen->Clear();
 
