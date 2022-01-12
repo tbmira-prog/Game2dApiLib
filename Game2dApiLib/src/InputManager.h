@@ -20,8 +20,6 @@ namespace input
 		inline Input* GetInput();
 		inline Input* WaitInput();
 
-		virtual void HandleInput(std::vector<Controllable> controllables, std::reference_wrapper <Input> input) const;
-
 	private:
 		std::unique_ptr <InputGetter> inputGetter;
 	};

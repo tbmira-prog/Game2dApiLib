@@ -21,12 +21,6 @@
     <ClInclude Include="src\Command.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="src\Controllable.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game2dApiLib.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="src\GraphManager.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
@@ -50,9 +44,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Controllable.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
     <ClCompile Include="src\GraphManager.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>

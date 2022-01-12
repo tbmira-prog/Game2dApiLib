@@ -14,9 +14,3 @@ Input* InputManager::WaitInput()
 {
 	return inputGetter->WaitInput();
 }
-
-void InputManager::HandleInput(std::vector<Controllable> controllables, std::reference_wrapper <Input> input) const
-{
-	for (auto i = controllables.begin(); i != controllables.end(); i++)
-		i->HandleInput(input);
-}
