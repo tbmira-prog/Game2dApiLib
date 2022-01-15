@@ -12,5 +12,5 @@ void InputManager::GetInput(Input& input)
 
 void InputManager::WaitInput(Input& input)
 {
-	inputGetter->WaitInput(input);
+	inputGetter->WaitInput(input); // HACK Como fazer o usuário configurar o timeout?
 }

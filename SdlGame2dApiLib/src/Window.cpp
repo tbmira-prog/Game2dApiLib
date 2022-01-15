@@ -1,9 +1,9 @@
 #ifdef __linux__ 
-//linux code goes here
+//linux code goes here // UNDONE Biblioteca para esconder terminal no linux
 #elif _WIN32
 #include <windows.h>
 #else
-// ...
+// ... // UNDONE Biblioteca para esconder terminal em outras plataformas
 #endif
 
 #include "SDL_image.h"
@@ -13,14 +13,13 @@ using namespace graph::sdl;
 void HideConsole()
 {
 #ifdef __linux__ 
-	// Linux code goes here
+	// Linux code goes here // UNDONE Esconder terminal no linux
 #elif _WIN32
 	::ShowWindow(::GetConsoleWindow(), SW_HIDE);
 #else
-	// ...
+	// UNDONE Esconder terminal em outras plataformas
 #endif
 }
-
 
 Window::Window(int width, int height) : Screen(), pWindow(nullptr), pRenderer(nullptr)
 {
@@ -28,7 +27,7 @@ Window::Window(int width, int height) : Screen(), pWindow(nullptr), pRenderer(nu
 	{
 		HideConsole();
 
-		if (SDL_Init(SDL_INIT_VIDEO) < 0)
+		if (SDL_Init(SDL_INIT_VIDEO) < 0) // TODO Será possível iniciar o SDL com Audio em AudioPlayer? Ou dever ser feito tudo nesta classe?
 			throw;
 		
 		pWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
@@ -44,7 +43,7 @@ Window::Window(int width, int height) : Screen(), pWindow(nullptr), pRenderer(nu
 	}
 	catch (...)
 	{
-		// Abort
+		// TODO Abort caso falhe em criar janela
 	}
 }
 

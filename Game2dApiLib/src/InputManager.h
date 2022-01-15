@@ -11,7 +11,7 @@
 
 namespace input
 {
-	class InputManager : public Unique
+	class InputManager : public Unique // HACK Planejar tratamento de eventos que não são inputs, por exemplo fechar programa
 	{
 	public:
 		InputManager(InputGetter&);
@@ -20,7 +20,7 @@ namespace input
 		inline void GetInput(Input&);
 		inline void WaitInput(Input&);
 
-		//void HandleInput(const Input&, std::vector<Controllable>);
+		//void HandleInput(const Input&, std::vector<Controllable>); // TODO Escrever HandleInput e também typedef ControllableVector
 
 	private:
 		std::unique_ptr <InputGetter> inputGetter;

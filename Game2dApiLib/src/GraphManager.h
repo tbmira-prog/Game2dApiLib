@@ -13,7 +13,7 @@ namespace graph
 {
 	typedef std::vector<std::reference_wrapper<Image>> ImageVector;
 
-	class GraphManager : public Unique
+	class GraphManager : public Unique // UNDONE Pensar em como GraphManager poderia lidar com múltiplas janelas, ou se isso não será permitido
 	{
 	public:
 		GraphManager(Screen&);

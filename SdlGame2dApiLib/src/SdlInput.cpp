@@ -7,7 +7,7 @@ bool SdlInput::operator==(const Input& otherInput) const
 
 	if (otherSdlInput)
 	{
-		if (this->sdlEvent.type == otherSdlInput->sdlEvent.type)
+		if (this->sdlEvent.type == otherSdlInput->sdlEvent.type) // TODO Pensar no que é importante comparar para ver se dois inputs SDL são iguais, para cada tipo de input
 		{
 			switch (this->sdlEvent.type)
 			{

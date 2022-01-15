@@ -5,8 +5,8 @@
 
 namespace input
 {
-	class InputGetter // TODO Unique?
-	{
+	class InputGetter // UNDONE Planejar se classes como InputGetter, AudioPlayer e Screen serão únicas ou não
+	{				 // Únicas: InputGetter e AudioPlayer. Múltiplas: Screen
 	public:
 		InputGetter() {};
 		virtual ~InputGetter() {};

@@ -15,7 +15,7 @@ namespace input
 			SdlInput() {};
 			virtual ~SdlInput() {}; // Virtual?
 
-			std::size_t Hash() const;
+			std::size_t Hash() const; // TODO Implementar hash retornando o valor de SDL_EVENT_TYPE
 			bool operator==(const Input&) const override;
 
 		private:

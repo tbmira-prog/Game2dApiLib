@@ -11,7 +11,7 @@ SdlImage::SdlImage(std::string file) : Image(), pTexture(), renderQuad(), center
 
 SdlImage::~SdlImage()
 {
-	// TODO Free();
+	// TODO Gerenciamento de memória para SdlImagens no destrutor
 }
 
 SdlImage::SdlImage(const SdlImage& otherImage) : Image(otherImage), pTexture(otherImage.pTexture),
@@ -43,7 +43,7 @@ void SdlImage::Load(std::string filePath)
 		throw;
     }
 
-    pTexture = SDL_CreateTextureFromSurface(pRenderer, loadedSurface); // TODO o porra kkkkk como que vai fazer pra acessar esse renderer
+    pTexture = SDL_CreateTextureFromSurface(pRenderer, loadedSurface); // HACK Como que vai fazer pra acessar Window::pRenderer sem que os clientes precisem passar o renderer como argumento para esta função ou para o construtor?
     if (pTexture == NULL)
     {
 		SDL_FreeSurface(loadedSurface);
@@ -61,7 +61,7 @@ void SdlImage::Print(Screen& screen) const
 		SDL_RenderCopyEx(pWindow->pRenderer, &(*pTexture), &clip, &renderQuad, angle, &center, flipMode);
 }
 
-void SdlImage::Free() // TODO Podem ter outras SdlImages usando o mesmo ponteiro. Usar shared_ptr. Tem que pesquisar sobre o deleter
+void SdlImage::Free() // HACK Podem ter outras SdlImages usando o mesmo ponteiro. Usar shared_ptr. Tem que pesquisar sobre o deleter
 {
 	/*if (pTexture != NULL)
 	{

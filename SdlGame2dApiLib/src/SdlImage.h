@@ -33,7 +33,7 @@ namespace graph
 		private:
 			std::shared_ptr<SDL_Texture> pTexture;
 			
-			// TODO Setters e Getters, public, organizar em struct???
+			// TODO O que fazer para configurar atributos das SdlImages? Setters e Getters, public, organizar em struct?
 		public:
 			SDL_Point center;
 			SDL_Rect renderQuad, clip;

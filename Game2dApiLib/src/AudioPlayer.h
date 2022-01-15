@@ -6,11 +6,11 @@
 
 namespace audio
 {
-	class AudioPlayer // TODO : public Unique
+	class AudioPlayer
 	{
 	public:
 		AudioPlayer() {}
-		~AudioPlayer() {};
+		virtual ~AudioPlayer() {};
 
 		virtual void PlaySoundEffect(const SoundEffect&) = 0;
 		

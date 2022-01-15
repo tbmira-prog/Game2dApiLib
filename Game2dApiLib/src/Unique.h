@@ -11,8 +11,7 @@ private:
 	Unique(const Unique&);
 	Unique& operator=(const Unique&);
 
-	static bool instantiated;	// Vai dar errado várias classes herdando isso!
-								// Um membro estático para vários objetos (GraphManager, InputManager, InputGetter...)
+	static bool instantiated; // TODO Arrumar classe Unique para que vário Managers possam derivar dela 
 };
 
 

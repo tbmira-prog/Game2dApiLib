@@ -3,7 +3,7 @@
 
 namespace input
 {
-	class Input
+	class Input // HACK Hash e Polimorfismo, como usar essa classe como uma interface e também como chave de um unorded_map?
 	{
 	public:
 		Input();

@@ -11,7 +11,7 @@ namespace graph
 	{
 		class Window : public Screen
 		{
-		friend class SdlImage; // TODO Tem acesso a pWindow mas só precisa do pRenderer
+		friend class SdlImage; // TODO SdlImage tem acesso a pWindow mas só precisa do pRenderer. Como melhorar isto?
 
 		public:
 			Window(int width, int height);

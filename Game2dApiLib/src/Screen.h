@@ -3,7 +3,7 @@
 
 namespace graph
 {
-	class Screen
+	class Screen // TODO Pensar se é melhor Image::Print(Screen) ou Screen::Print(Image)
 	{
 	public:
 		Screen() {};

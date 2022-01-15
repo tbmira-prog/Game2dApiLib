@@ -1,20 +1,20 @@
 #ifndef _AUDIO_
 #define _AUDIO_
 
-namespace audio
+namespace audio // UNDONE Complementar definição das classes de audio (construtor de copia, operator=, etc.)
 {
 	class SoundEffect
 	{
 	public:
 		SoundEffect() {};
-		~SoundEffect() {};
+		virtual ~SoundEffect() {};
 	};
 
 	class Music
 	{
 	public:
 		Music() {};
-		~Music() {};
+		virtual ~Music() {};
 	};
 }
 
