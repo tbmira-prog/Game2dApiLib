@@ -11,8 +11,10 @@ namespace graph
 	{
 		class Window : public Screen
 		{
+		friend class SdlImage; // TODO Tem acesso a pWindow mas só precisa do pRenderer
+
 		public:
-			Window();
+			Window(int width, int height);
 			~Window();
 
 			void Clear();

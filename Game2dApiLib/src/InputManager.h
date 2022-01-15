@@ -17,8 +17,10 @@ namespace input
 		InputManager(InputGetter&);
 		~InputManager();
 
-		inline Input* GetInput();
-		inline Input* WaitInput();
+		inline void GetInput(Input&);
+		inline void WaitInput(Input&);
+
+		//void HandleInput(const Input&, std::vector<Controllable>);
 
 	private:
 		std::unique_ptr <InputGetter> inputGetter;

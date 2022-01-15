@@ -5,12 +5,12 @@ InputManager::InputManager(InputGetter& newInputGetter) : Unique(), inputGetter(
 
 InputManager::~InputManager() {}
 
-Input* InputManager::GetInput()
+void InputManager::GetInput(Input& input)
 {
-	return inputGetter->GetInput();
+	inputGetter->GetInput(input);
 }
 
-Input* InputManager::WaitInput()
+void InputManager::WaitInput(Input& input)
 {
-	return inputGetter->WaitInput();
+	inputGetter->WaitInput(input);
 }

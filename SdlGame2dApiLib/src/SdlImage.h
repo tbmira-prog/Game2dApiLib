@@ -1,7 +1,12 @@
 #ifndef _SDL_IMAGE_
 #define _SDL_IMAGE_
 
+#include <memory>
+#include <string>
+
 #include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
 
 #include "Image.h"
 
@@ -13,16 +18,27 @@ namespace graph
 		{
 		public:
 			SdlImage();
-			//SdlImage(...);
+			SdlImage(std::string file);
+
+			SdlImage(const SdlImage&);
+			SdlImage& operator=(const SdlImage&);
 
 			~SdlImage();
 
-			//void Load();
+			void Load(std::string filePath);
 			void Print(Screen& screen) const;
 
+			void Free();
+
 		private:
-			SDL_Texture* pTexture;
-			size_t width, height;
+			std::shared_ptr<SDL_Texture> pTexture;
+			
+			// TODO Setters e Getters, public, organizar em struct???
+		public:
+			SDL_Point center;
+			SDL_Rect renderQuad, clip;
+			SDL_RendererFlip flipMode;
+			double angle;
 		};
 	}
 }

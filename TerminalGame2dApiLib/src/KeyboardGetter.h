@@ -7,7 +7,7 @@ namespace input
 {
 	namespace terminal
 	{
-		class KeyboardGetter : public InputGetter()
+		class KeyboardGetter : public InputGetter
 		{
 		public:
 			KeyboardGetter() {};

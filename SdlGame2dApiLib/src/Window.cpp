@@ -1,14 +1,37 @@
+#ifdef __linux__ 
+//linux code goes here
+#elif _WIN32
+#include <windows.h>
+#else
+// ...
+#endif
+
+#include "SDL_image.h"
 #include "Window.h"
 using namespace graph::sdl;
 
-Window::Window() : Screen(), pWindow(nullptr), pRenderer(nullptr)
+void HideConsole()
+{
+#ifdef __linux__ 
+	// Linux code goes here
+#elif _WIN32
+	::ShowWindow(::GetConsoleWindow(), SW_HIDE);
+#else
+	// ...
+#endif
+}
+
+
+Window::Window(int width, int height) : Screen(), pWindow(nullptr), pRenderer(nullptr)
 {
 	try
 	{
+		HideConsole();
+
 		if (SDL_Init(SDL_INIT_VIDEO) < 0)
 			throw;
-		//TO DO SCreen width
-		//pWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		
+		pWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 		if (pWindow == NULL)
 			throw;
 
@@ -16,8 +39,8 @@ Window::Window() : Screen(), pWindow(nullptr), pRenderer(nullptr)
 		if (pRenderer == NULL)
 			throw;
 
-		//if (!(IMG_Init(imgFlags) & imgFlags))
-		//	throw;
+		if (!IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG))
+			throw;
 	}
 	catch (...)
 	{
@@ -32,7 +55,7 @@ Window::~Window()
 	pWindow = nullptr;
 	pRenderer = nullptr;
 
-//	IMG_Quit();
+	IMG_Quit();
 	SDL_Quit();
 }
 

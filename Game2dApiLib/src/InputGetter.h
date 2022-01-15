@@ -5,15 +5,14 @@
 
 namespace input
 {
-	class InputGetter // Unique?
+	class InputGetter // TODO Unique?
 	{
 	public:
 		InputGetter() {};
 		virtual ~InputGetter() {};
 
-		virtual Input* GetInput() = 0; // retorna input ou, recebe input e altera ele
-		virtual Input* WaitInput() = 0; // retorna input ou, recebe input e altera ele
-										// Retornando um ponteiro ia precisar ficar alocando memória dinamicamente
+		virtual void GetInput(Input&) = 0;
+		virtual void WaitInput(Input& input, size_t timeOut_ms) = 0;
 	};
 }
 
