@@ -7,7 +7,11 @@ KeyboardInput::KeyboardInput(char c) : Input(), keyboardInput(c) {}
 
 KeyboardInput::~KeyboardInput() {};
 
-bool KeyboardInput::operator==(const KeyboardInput& other) const
+bool KeyboardInput::operator==(const Input& other) const
 {
-	return this->keyboardInput == other.keyboardInput;
+	const KeyboardInput* charInput = dynamic_cast<const KeyboardInput*>(&other);
+	if (charInput)
+		return this->keyboardInput == charInput->keyboardInput;
+	else
+		return false;
 }

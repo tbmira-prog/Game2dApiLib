@@ -13,7 +13,8 @@ namespace input
 			KeyboardGetter() {};
 			~KeyboardGetter() {};
 
-
+			void GetInput(Input&) override;
+			void WaitInput(Input& input, size_t timeOut_ms) override;
 		};
 	}
 }

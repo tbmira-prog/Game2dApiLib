@@ -15,9 +15,9 @@ namespace input
 
 			~KeyboardInput();
 
-			bool operator==(const KeyboardInput&) const;
+			bool operator==(const Input&) const override;
 
-		private:
+		//private:
 			char keyboardInput;
 		};
 	}
