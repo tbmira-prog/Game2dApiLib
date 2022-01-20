@@ -3,17 +3,18 @@
 
 namespace graph
 {
-	class Screen // TODO Pensar se é melhor Image::Print(Screen) ou Screen::Print(Image)
+	class Screen // TO_DO Pensar se é melhor Image::Print(Screen) ou Screen::Print(Image)
 	{
 	public:
 		Screen() {};
 		virtual ~Screen() {};
 
 		virtual void Clear() = 0;
+		virtual void Update() = 0;
 
 	private:
-		Screen(const Screen&);
-		Screen& operator=(const Screen&);
+		Screen(const Screen&) = delete;
+		Screen& operator=(const Screen&) = delete;
 	};
 }
 

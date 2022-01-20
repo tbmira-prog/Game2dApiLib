@@ -1,71 +1,69 @@
 #include "SdlImage.h"
-#include "Window.h"
+#include "SdlWindow.h"
 using namespace graph::sdl;
 
-SdlImage::SdlImage() : Image(), pTexture(), renderQuad(), center(), clip(), flipMode(), angle(0.0) {}
+Image::Image() : graph::Image(), pTexture(), configuration() {}
 
-SdlImage::SdlImage(std::string file) : Image(), pTexture(), renderQuad(), center(), clip(), flipMode(), angle(0.0)
-{
-	Load(file);
-}
-
-SdlImage::~SdlImage()
-{
-	// TODO Gerenciamento de memória para SdlImagens no destrutor
-}
-
-SdlImage::SdlImage(const SdlImage& otherImage) : Image(otherImage), pTexture(otherImage.pTexture),
-												 renderQuad(otherImage.renderQuad), center(otherImage.center),
-												 clip(otherImage.clip), flipMode(otherImage.flipMode), angle(otherImage.angle)
+Image::Image(SDL_Texture* pNewTexture) : graph::Image(), pTexture(pNewTexture, TextureDeleter()), configuration()
 {}
 
-SdlImage& SdlImage::operator=(const SdlImage& otherImage)
+Image::Image(std::shared_ptr<SDL_Texture> pNewTexture) : graph::Image(), pTexture(pNewTexture), configuration()
+{
+	// UNDONE Checar deleter
+}
+
+Image::Image(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration) : graph::Image(),
+																						 pTexture(pNewTexture, TextureDeleter()),
+																						 configuration()
+{}
+
+Image::Image(std::shared_ptr<SDL_Texture> pNewTexture, const RenderingConfiguration& newConfiguration) : graph::Image(),
+																										 pTexture(pNewTexture),
+																										 configuration()
+{
+	// UNDONE Checar deleter
+}
+
+Image::Image(const Image& otherImage) : graph::Image(otherImage), pTexture(otherImage.pTexture), configuration(otherImage.configuration)
+{}
+
+Image& Image::operator=(const Image& otherImage)
 {
 	pTexture = otherImage.pTexture;
-	renderQuad = otherImage.renderQuad;
-	center = otherImage.center;
-	clip = otherImage.clip;
-	flipMode = otherImage.flipMode;
-	angle = otherImage.angle;
+	configuration = otherImage.configuration;
 
 	return *this;
 }
 
-void SdlImage::Load(std::string filePath)
+Image::~Image() {}
+
+void Image::Load(SDL_Texture* pNewTexture)
 {
-	Free();
-
-    //Load image at specified path
-    SDL_Surface* loadedSurface = IMG_Load(filePath.c_str());
-    if (loadedSurface == NULL)
-    {
-		SDL_FreeSurface(loadedSurface);
-		throw;
-    }
-
-    pTexture = SDL_CreateTextureFromSurface(pRenderer, loadedSurface); // HACK Como que vai fazer pra acessar Window::pRenderer sem que os clientes precisem passar o renderer como argumento para esta função ou para o construtor?
-    if (pTexture == NULL)
-    {
-		SDL_FreeSurface(loadedSurface);
-        throw;
-    }
-
-	SDL_FreeSurface(loadedSurface);
+	pTexture.reset(pNewTexture, TextureDeleter());
+    if (!pTexture)
+        throw; // TO_DO throw quando textura não for carregada ou não?
 }
 
-void SdlImage::Print(Screen& screen) const
+void Image::Load(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration)
+{
+	Load(pNewTexture);
+	configuration = newConfiguration;
+}
+
+void Image::Print(Screen& screen) const
 {
 	Window* pWindow = dynamic_cast<Window*>(&screen);
 	
 	if (pWindow != nullptr)
-		SDL_RenderCopyEx(pWindow->pRenderer, &(*pTexture), &clip, &renderQuad, angle, &center, flipMode);
-}
-
-void SdlImage::Free() // HACK Podem ter outras SdlImages usando o mesmo ponteiro. Usar shared_ptr. Tem que pesquisar sobre o deleter
-{
-	/*if (pTexture != NULL)
 	{
-		SDL_DestroyTexture(pTexture);
-		*this = SdlImage();
-	}*/
+		SDL_Rect clip = configuration.GetClip().clip;
+		SDL_Rect renderQuad = configuration.GetRenderQuad().renderQuad;
+		SDL_Point center = configuration.GetRotation().center;
+		SDL_RendererFlip flip = configuration.GetRotation().flip;
+
+		SDL_RenderCopyEx(pWindow->pRenderer, &(*pTexture),  // TO_DO Melhorar o modo como Window->pRenderer é acessado
+			&clip,
+			&renderQuad,
+			configuration.GetRotation().angle, &center, flip);
+	}
 }

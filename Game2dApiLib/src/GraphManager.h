@@ -11,12 +11,12 @@
 
 namespace graph
 {
-	typedef std::vector<std::reference_wrapper<Image>> ImageVector;
+	typedef std::vector<std::reference_wrapper<Image>> ImageVector; // TO_DO Vector é o conteiner mais otimizado para isto?
 
 	class GraphManager : public Unique // UNDONE Pensar em como GraphManager poderia lidar com múltiplas janelas, ou se isso não será permitido
 	{
 	public:
-		GraphManager(Screen&);
+		explicit GraphManager(Screen&);
 		~GraphManager();
 
 		void UpdateScreen(ImageVector images);
@@ -24,9 +24,8 @@ namespace graph
 	private:
 		Screen& screen;
 
-	private:
-		GraphManager(const GraphManager&);
-		GraphManager& operator=(const GraphManager&);
+		GraphManager(const GraphManager&) = delete;
+		GraphManager& operator=(const GraphManager&) = delete;
 	};
 }
 

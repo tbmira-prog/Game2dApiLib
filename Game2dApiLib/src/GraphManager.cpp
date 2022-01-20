@@ -11,4 +11,6 @@ void GraphManager::UpdateScreen(ImageVector images)
 
 	for (auto image = images.cbegin(); image != images.cend(); image++)
 		image->get().Print(screen);
+
+	screen.Update();
 }

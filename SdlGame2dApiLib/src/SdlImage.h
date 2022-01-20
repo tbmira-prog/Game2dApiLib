@@ -6,40 +6,40 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
-#include <SDL_ttf.h>
+//#include <SDL_ttf.h>
 
 #include "Image.h"
+#include "RenderingConfiguration.h"
 
-namespace graph
+namespace graph // TO_DO Implementar swap para as classes que precisarem
 {
 	namespace sdl
 	{
-		class SdlImage : public Image
+		class Image : public graph::Image
 		{
 		public:
-			SdlImage();
-			SdlImage(std::string file);
+			Image();
+			explicit Image(SDL_Texture* pNewTexture);
+			explicit Image(std::shared_ptr<SDL_Texture> pNewTexture);
 
-			SdlImage(const SdlImage&);
-			SdlImage& operator=(const SdlImage&);
+			explicit Image(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration );
+			explicit Image(std::shared_ptr<SDL_Texture> pNewTexture, const RenderingConfiguration& newConfiguration);
 
-			~SdlImage();
+			Image(const Image&);
+			Image& operator=(const Image&);
 
-			void Load(std::string filePath);
+			~Image();
+
+			void Load(SDL_Texture* pNewTexture); // UNDONE Precisa desta função ou basta usar os construtores?
+			void Load(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration);
+			
 			void Print(Screen& screen) const;
 
-			void Free();
-
+			RenderingConfiguration configuration; // HACK Construtuores e funções Load devem setar renderQuad.w e renderQuad.h
 		private:
 			std::shared_ptr<SDL_Texture> pTexture;
-			
-			// TODO O que fazer para configurar atributos das SdlImages? Setters e Getters, public, organizar em struct?
-		public:
-			SDL_Point center;
-			SDL_Rect renderQuad, clip;
-			SDL_RendererFlip flipMode;
-			double angle;
 		};
+
 	}
 }
 

@@ -260,13 +260,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\dev\vclib\SDL2_ttf-2.0.14\x86_64-w64-mingw32\include\SDL2;$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include</IncludePath>
-    <LibraryPath>C:\dev\vclib\SDL2_ttf-2.0.14\x86_64-w64-mingw32\lib;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include</IncludePath>
+    <LibraryPath>C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\dev\vclib\SDL2_ttf-2.0.14\x86_64-w64-mingw32\include\SDL2;$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include</IncludePath>
-    <LibraryPath>C:\dev\vclib\SDL2_ttf-2.0.14\x86_64-w64-mingw32\lib;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include</IncludePath>
+    <LibraryPath>C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -288,13 +288,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\dev\vclib\SDL2_ttf-2.0.14\x86_64-w64-mingw32\include\SDL2;$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include</IncludePath>
-    <LibraryPath>C:\dev\vclib\SDL2_ttf-2.0.14\x86_64-w64-mingw32\lib;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include</IncludePath>
+    <LibraryPath>C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\dev\vclib\SDL2_ttf-2.0.14\x86_64-w64-mingw32\include\SDL2;$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include</IncludePath>
-    <LibraryPath>C:\dev\vclib\SDL2_ttf-2.0.14\x86_64-w64-mingw32\lib;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include</IncludePath>
+    <LibraryPath>C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -404,7 +404,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -415,10 +415,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib; SDL2main.lib; SDL2_image.lib; SDL2_mixer.lib; SDL2_ttf.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib; SDL2main.lib; SDL2_image.lib; SDL2_mixer.lib; </AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -438,10 +438,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib; SDL2main.lib; SDL2_image.lib; SDL2_mixer.lib; SDL2_ttf.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -552,7 +552,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -563,10 +563,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib; SDL2main.lib; SDL2_image.lib; SDL2_mixer.lib; SDL2_ttf.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib; SDL2main.lib; SDL2_image.lib; SDL2_mixer.lib; </AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -586,10 +586,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib; SDL2main.lib; SDL2_image.lib; SDL2_mixer.lib; SDL2_ttf.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -601,13 +601,14 @@
     <ClCompile Include="src\SdlImage.cpp" />
     <ClCompile Include="src\SdlInput.cpp" />
     <ClCompile Include="src\SdlInputGetter.cpp" />
-    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\SdlWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\RenderingConfiguration.h" />
     <ClInclude Include="src\SdlImage.h" />
     <ClInclude Include="src\SdlInput.h" />
     <ClInclude Include="src\SdlInputGetter.h" />
-    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\SdlWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
