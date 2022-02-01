@@ -1,6 +1,7 @@
 #ifndef _SDL_IMAGE_
 #define _SDL_IMAGE_
 
+#include <exception>
 #include <memory>
 #include <string>
 
@@ -30,16 +31,19 @@ namespace graph // TO_DO Implementar swap para as classes que precisarem
 
 			~Image();
 
-			void Load(SDL_Texture* pNewTexture); // UNDONE Precisa desta função ou basta usar os construtores?
-			void Load(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration);
+			void ChangeTexture(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration); // UNDONE Precisa desta função ou basta usar os construtores?
 			
 			void Print(Screen& screen) const;
 
-			RenderingConfiguration configuration; // HACK Construtuores e funções Load devem setar renderQuad.w e renderQuad.h
+			RenderingConfiguration configuration;
 		private:
 			std::shared_ptr<SDL_Texture> pTexture;
 		};
 
+		struct InvalidTexture : public std::exception
+		{
+			const char* what() const override { return "Invalid texture was passed to sdl::Image!\n"; }
+		};
 	}
 }
 

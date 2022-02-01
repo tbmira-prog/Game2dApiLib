@@ -1,6 +1,7 @@
 #ifndef _SDL_WINDOW_
 #define _SDL_WINDOW_
 
+#include <exception>
 #include <memory>
 #include <string>
 
@@ -31,9 +32,38 @@ namespace graph
 			SDL_Renderer* pRenderer;
 		};
 
-		struct TextureDeleter // UNDONE SdlImage::operator delete();
+		inline void DeleteTexture(SDL_Texture* texture)
 		{
-			void operator()(SDL_Texture* texture);
+			if (texture != NULL)
+			{
+				SDL_DestroyTexture(texture);
+				texture = NULL;
+			}
+		}
+
+		struct FailedToCreateWindow : public std::exception
+		{
+			const char* what() const override { return "Failed to create window!\n"; }
+		};
+
+		struct FailedToCreateRenderer : public std::exception
+		{
+			const char* what() const override { return "Failed to create window!\n"; }
+		};
+
+		struct FailedToCreateTexture : public std::exception
+		{
+			const char* what() const override { return "Failed to create texture!\n"; }
+		};
+
+		struct FailedToInitializateSDL : public std::exception
+		{
+			const char* what() const override { return "Failed to create window!\n"; }
+		};
+
+		struct FailedToInitiateSDLImage : public std::exception
+		{
+			const char* what() const override { return "Failed to create window!\n"; }
 		};
 	}
 }

@@ -6,6 +6,9 @@
 // ... // UNDONE Biblioteca para esconder terminal em outras plataformas
 #endif
 
+#include <cstdlib>
+#include <iostream>
+
 #include <SDL_image.h>
 
 #include "SdlWindow.h"
@@ -23,28 +26,30 @@ void HideConsole()
 }
 
 Window::Window(int width, int height, std::string title, bool fullScreen) : Screen(), pWindow(nullptr), pRenderer(nullptr)
-{ // HACK Configurar título da tela e outras opções (flags)
+{
 	try
 	{
 		HideConsole();
 
 		if (SDL_Init(SDL_INIT_VIDEO) < 0) // TO_DO Será possível iniciar o SDL com Audio em AudioPlayer? Ou dever ser feito tudo nesta classe?
-			throw;
+			throw  FailedToInitializateSDL();
 
-		pWindow = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
+		// TODO Configurar título da tela e outras opções (flags)
+		pWindow = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN | (SDL_WINDOW_FULLSCREEN_DESKTOP && fullScreen));
 		if (pWindow == NULL)
-			throw;
+			throw FailedToCreateWindow();
 
 		pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 		if (pRenderer == NULL)
-			throw;
+			throw FailedToCreateRenderer();
 
 		if (!IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG))
-			throw;
+			throw FailedToInitiateSDLImage();
 	}
-	catch (...)
+	catch (const std::exception& err)
 	{
-		// TO_DO Abort caso falhe em criar janela
+		std::cerr << err.what();
+		std::abort();
 	}
 }
 
@@ -73,25 +78,25 @@ std::shared_ptr<SDL_Texture> Window::CreateTexture(std::string filePath)
 {
 	SDL_Surface* loadedSurface = IMG_Load(filePath.c_str());
 	if (loadedSurface == NULL)
-		throw; // TO_DO Lançar excessão caso falhe em criar textura
+		throw FailedToCreateTexture();
 
 	SDL_Texture* newTexture = SDL_CreateTextureFromSurface(pRenderer, loadedSurface);
 	SDL_FreeSurface(loadedSurface);
 	
 	if (newTexture)
 	{
-		std::shared_ptr<SDL_Texture> pTexture(newTexture, TextureDeleter());
+		std::shared_ptr<SDL_Texture> pTexture(newTexture, DeleteTexture);
 		return pTexture;
 	}
 	else
-		throw; // TO_DO Lançar excessão caso falhe em criar textura
+		throw FailedToCreateTexture();
 }
 
 std::shared_ptr<SDL_Texture> Window::CreateTexture(std::string filePath, const SDL_Color& transparencyColor) // UNDONE Código duplicado
 {
 	SDL_Surface* loadedSurface = IMG_Load(filePath.c_str());
 	if (loadedSurface == NULL)
-		throw; // TO_DO Lançar excessão caso falhe em criar textura
+		throw FailedToCreateTexture();
 
 	SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, transparencyColor.r, transparencyColor.g, transparencyColor.b));
 
@@ -100,15 +105,18 @@ std::shared_ptr<SDL_Texture> Window::CreateTexture(std::string filePath, const S
 
 	if (newTexture)
 	{
-		std::shared_ptr<SDL_Texture> pTexture(newTexture, TextureDeleter());
+		std::shared_ptr<SDL_Texture> pTexture(newTexture, DeleteTexture);
 		return pTexture;
 	}
 	else
-		throw; // TO_DO Lançar excessão caso falhe em criar textura
+		throw FailedToCreateTexture();
 }
 
-void TextureDeleter::operator()(SDL_Texture* texture)
-{
-	if (texture != NULL)
-		SDL_DestroyTexture(texture);
-}
+//void DeleteTexture(SDL_Texture* texture)
+//{
+//	if (texture != NULL)
+//	{
+//		SDL_DestroyTexture(texture);
+//		texture = NULL;
+//	}
+//}

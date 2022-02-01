@@ -4,24 +4,27 @@ using namespace graph::sdl;
 
 Image::Image() : graph::Image(), pTexture(), configuration() {}
 
-Image::Image(SDL_Texture* pNewTexture) : graph::Image(), pTexture(pNewTexture, TextureDeleter()), configuration()
-{}
+Image::Image(SDL_Texture* pNewTexture) : graph::Image(), pTexture(pNewTexture, DeleteTexture), configuration(pNewTexture) {}
 
-Image::Image(std::shared_ptr<SDL_Texture> pNewTexture) : graph::Image(), pTexture(pNewTexture), configuration()
+Image::Image(std::shared_ptr<SDL_Texture> pNewTexture) : graph::Image(), pTexture(pNewTexture), configuration(&(*pNewTexture))
 {
-	// UNDONE Checar deleter
+	if (auto pDel = std::get_deleter<void(*)(SDL_Texture*)>(pTexture))
+		if (*pDel != DeleteTexture)
+			pTexture.reset(pNewTexture.get(), DeleteTexture); // UNDONE Código duplicado
 }
 
 Image::Image(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration) : graph::Image(),
-																						 pTexture(pNewTexture, TextureDeleter()),
-																						 configuration()
+																						 pTexture(pNewTexture, DeleteTexture),
+																						 configuration(newConfiguration)
 {}
 
 Image::Image(std::shared_ptr<SDL_Texture> pNewTexture, const RenderingConfiguration& newConfiguration) : graph::Image(),
 																										 pTexture(pNewTexture),
-																										 configuration()
+																										 configuration(newConfiguration)
 {
-	// UNDONE Checar deleter
+	if (auto pDel = std::get_deleter<void(*)(SDL_Texture*)>(pTexture))
+		if (*pDel != DeleteTexture)
+			pTexture.reset(pNewTexture.get(), DeleteTexture); // UNDONE Código duplicado
 }
 
 Image::Image(const Image& otherImage) : graph::Image(otherImage), pTexture(otherImage.pTexture), configuration(otherImage.configuration)
@@ -37,16 +40,12 @@ Image& Image::operator=(const Image& otherImage)
 
 Image::~Image() {}
 
-void Image::Load(SDL_Texture* pNewTexture)
+void Image::ChangeTexture(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration)
 {
-	pTexture.reset(pNewTexture, TextureDeleter());
-    if (!pTexture)
-        throw; // TO_DO throw quando textura não for carregada ou não?
-}
+	pTexture.reset(pNewTexture, DeleteTexture);
+	if (!pTexture)
+		throw InvalidTexture();
 
-void Image::Load(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration)
-{
-	Load(pNewTexture);
 	configuration = newConfiguration;
 }
 
