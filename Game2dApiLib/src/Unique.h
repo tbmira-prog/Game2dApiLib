@@ -1,18 +1,29 @@
 #ifndef _UNIQUE_
 #define _UNIQUE_
 
+#include <cassert>
+
+template<typename T>
 class Unique
 {
 public:
-	Unique();
-	virtual ~Unique();
+	Unique()
+	{
+		assert(!instantiated); // TO_DO Trocar assert por throw ou outra coisa, pois assert só funciona em debug
+		instantiated = true;
+	}
 
 private:
-	Unique(const Unique&);
-	Unique& operator=(const Unique&);
+	virtual ~Unique() {}
+	friend T;
 
-	static bool instantiated; // TODO Arrumar classe Unique para que vário Managers possam derivar dela 
+	Unique(const Unique&) = delete; // TO_DO = delete em todas as classes que não possuirem construtor de cópia
+	Unique& operator=(const Unique&) = delete;
+
+	static bool instantiated;
 };
 
+template<typename T>
+bool Unique<T>::instantiated = false;
 
 #endif // _UNIQUE_

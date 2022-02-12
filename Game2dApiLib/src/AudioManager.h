@@ -6,7 +6,7 @@
 
 namespace audio
 {
-	class AudioManager : public Unique // UNDONE Definir e implementar funções de AudioManager
+	class AudioManager : public Unique<AudioManager> // UNDONE Definir e implementar funções de AudioManager
 	{
 	public:
 		AudioManager(AudioPlayer&);

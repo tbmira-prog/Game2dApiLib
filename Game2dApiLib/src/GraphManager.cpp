@@ -1,7 +1,7 @@
 #include "GraphManager.h"
 using namespace graph;
 
-GraphManager::GraphManager(Screen& newScreen) : Unique(), screen(newScreen) {}
+GraphManager::GraphManager(Screen& newScreen) : Unique<GraphManager>(), screen(newScreen) {}
 
 GraphManager::~GraphManager() {}
 

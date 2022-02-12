@@ -2,12 +2,12 @@
 
 #include <cassert>
 
-bool Unique::instantiated = false;
-
-Unique::Unique()
+template<typename T>
+Unique<T>::Unique()
 {
 	assert(!instantiated);
 	instantiated = true;
 }
 
-Unique::~Unique() {}
+template<typename T>
+Unique<T>::~Unique() {}
