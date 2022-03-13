@@ -2,7 +2,7 @@
 #define _CONTROLLABLE_
 
 #include <functional>
-#include <unordered_map>
+//#include <unordered_map>
 #include <vector>
 
 #include "Command.h"
@@ -14,14 +14,14 @@ namespace input
 	{
 	public:
 		Controllable();
-		~Controllable();
+		virtual ~Controllable();
 
-		void HandleInput(const std::reference_wrapper <Input> input);
+		virtual void HandleInput(const std::reference_wrapper <Input> input) = 0;
 
-		void SetCommandInput(const Input& input, const Command& command);
+		//void SetCommandInput(const Input& input, const Command& command);
 
-	private:
-		std::unordered_map < std::reference_wrapper<Input>, std::reference_wrapper<Command> > commandMap;
+	//private:
+		//std::unordered_map < std::reference_wrapper<Input>, std::reference_wrapper<Command> > commandMap;
 	};
 	// Os inputs e comandos irão ficar armazenados no objeto Controllable
 	// Eles devem ser referência por causa que Input e Command são classes polimórficas e virtuais puras

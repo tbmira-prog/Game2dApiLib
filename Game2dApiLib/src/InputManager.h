@@ -12,10 +12,11 @@
 #include "Unique.h"
 
 // TO_DO Ver construtores que precisam de explicit
+// HACK Planejar sistema de Undo e Redo
 
 namespace input
 {
-	//typedef std::vector<Controllable> ControllableVector; // TO_DO Controllable
+	typedef std::vector< std::reference_wrapper<Controllable>> ControllableVector; // TO_DO Controllable
 	//typedef std::stack<std::reference_wrapper<Command>> CommandStack;
 
 	class InputManager : public Unique<InputManager> // HACK Planejar tratamento de eventos que não são inputs, por exemplo fechar programa
@@ -27,8 +28,7 @@ namespace input
 		inline void GetInput(Input&);
 		inline void WaitInput(Input&, size_t timeOut_ms = 0);
 
-//		void HandleInput(const Input&, ControllableVector ); // TO_DO Escrever HandleInput e também typedef ControllableVector
-		void Undo();
+		void HandleInput(const std::reference_wrapper<Input>, ControllableVector ); // TO_DO Escrever HandleInput e também typedef ControllableVector
 
 	private:
 		InputGetter& inputGetter;
