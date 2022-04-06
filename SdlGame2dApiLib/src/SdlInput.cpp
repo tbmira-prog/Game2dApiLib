@@ -1,13 +1,13 @@
 #include "SdlInput.h"
 using namespace input::sdl;
 
-bool SdlInput::operator==(const Input& otherInput) const
+bool SdlInput :: operator==(const Input& otherInput) const
 {
 	const SdlInput* otherSdlInput = dynamic_cast<const SdlInput*>(&otherInput);
 
 	if (otherSdlInput)
 	{
-		if (this->sdlEvent.type == otherSdlInput->sdlEvent.type) // TODO Pensar no que é importante comparar para ver se dois inputs SDL são iguais, para cada tipo de input
+		if (this->sdlEvent.type == otherSdlInput->sdlEvent.type) // TO_DO Pensar no que é importante comparar para ver se dois inputs SDL são iguais, para cada tipo de input
 		{
 			switch (this->sdlEvent.type)
 			{
@@ -41,6 +41,9 @@ bool SdlInput::operator==(const Input& otherInput) const
 			case SDL_FINGERDOWN:
 			case SDL_FINGERUP:
 				return false; // tfinger
+
+			case SDL_FIRSTEVENT:
+				return false;
 
 			case SDL_KEYDOWN:
 			case SDL_KEYUP:

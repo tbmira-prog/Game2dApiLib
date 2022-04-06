@@ -13,6 +13,7 @@
 
 // TO_DO Ver construtores que precisam de explicit
 // HACK Planejar sistema de Undo e Redo
+// HACK Quem irá controlar o game loop? Como o usuário (alguém fazendo um jogo) irá interagir com isto?
 
 namespace input
 {

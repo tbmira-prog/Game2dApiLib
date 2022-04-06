@@ -16,20 +16,20 @@ namespace graph // TO_DO Implementar swap para as classes que precisarem
 {
 	namespace sdl
 	{
-		class Image : public graph::Image
+		class SdlImage : public Image
 		{
 		public:
-			Image();
-			explicit Image(SDL_Texture* pNewTexture);
-			explicit Image(std::shared_ptr<SDL_Texture> pNewTexture);
+			SdlImage();
+			explicit SdlImage(SDL_Texture* pNewTexture);
+			explicit SdlImage(std::shared_ptr<SDL_Texture> pNewTexture);
 
-			explicit Image(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration );
-			explicit Image(std::shared_ptr<SDL_Texture> pNewTexture, const RenderingConfiguration& newConfiguration);
+			explicit SdlImage(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration );
+			explicit SdlImage(std::shared_ptr<SDL_Texture> pNewTexture, const RenderingConfiguration& newConfiguration);
 
-			Image(const Image&);
-			Image& operator=(const Image&);
+			SdlImage(const SdlImage&);
+			SdlImage& operator=(const SdlImage&);
 
-			~Image();
+			~SdlImage();
 
 			void ChangeTexture(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration); // UNDONE Precisa desta função ou basta usar os construtores?
 			

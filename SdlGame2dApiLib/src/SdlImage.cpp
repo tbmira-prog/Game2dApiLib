@@ -2,35 +2,35 @@
 #include "SdlWindow.h"
 using namespace graph::sdl;
 
-Image::Image() : graph::Image(), pTexture(), configuration() {}
+SdlImage::SdlImage() : Image(), pTexture(), configuration() {}
 
-Image::Image(SDL_Texture* pNewTexture) : graph::Image(), pTexture(pNewTexture, DeleteTexture), configuration(pNewTexture) {}
+SdlImage::SdlImage(SDL_Texture* pNewTexture) : Image(), pTexture(pNewTexture, DeleteTexture), configuration(pNewTexture) {}
 
-Image::Image(std::shared_ptr<SDL_Texture> pNewTexture) : graph::Image(), pTexture(pNewTexture), configuration(&(*pNewTexture))
+SdlImage::SdlImage(std::shared_ptr<SDL_Texture> pNewTexture) : Image(), pTexture(pNewTexture), configuration(&(*pNewTexture))
 {
 	if (auto pDel = std::get_deleter<void(*)(SDL_Texture*)>(pTexture))
 		if (*pDel != DeleteTexture)
 			pTexture.reset(pNewTexture.get(), DeleteTexture); // UNDONE Código duplicado
 }
 
-Image::Image(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration) : graph::Image(),
-																						 pTexture(pNewTexture, DeleteTexture),
-																						 configuration(newConfiguration)
+SdlImage::SdlImage(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration) : Image(),
+																								pTexture(pNewTexture, DeleteTexture),
+																								configuration(newConfiguration)
 {}
 
-Image::Image(std::shared_ptr<SDL_Texture> pNewTexture, const RenderingConfiguration& newConfiguration) : graph::Image(),
-																										 pTexture(pNewTexture),
-																										 configuration(newConfiguration)
+SdlImage::SdlImage(std::shared_ptr<SDL_Texture> pNewTexture, const RenderingConfiguration& newConfiguration) : graph::Image(),
+																												 pTexture(pNewTexture),
+																												 configuration(newConfiguration)
 {
 	if (auto pDel = std::get_deleter<void(*)(SDL_Texture*)>(pTexture))
 		if (*pDel != DeleteTexture)
 			pTexture.reset(pNewTexture.get(), DeleteTexture); // UNDONE Código duplicado
 }
 
-Image::Image(const Image& otherImage) : graph::Image(otherImage), pTexture(otherImage.pTexture), configuration(otherImage.configuration)
+SdlImage::SdlImage(const SdlImage& otherImage) : Image(otherImage), pTexture(otherImage.pTexture), configuration(otherImage.configuration)
 {}
 
-Image& Image::operator=(const Image& otherImage)
+SdlImage& SdlImage::operator=(const SdlImage& otherImage)
 {
 	pTexture = otherImage.pTexture;
 	configuration = otherImage.configuration;
@@ -38,9 +38,9 @@ Image& Image::operator=(const Image& otherImage)
 	return *this;
 }
 
-Image::~Image() {}
+SdlImage::~SdlImage() {}
 
-void Image::ChangeTexture(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration)
+void SdlImage::ChangeTexture(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration)
 {
 	pTexture.reset(pNewTexture, DeleteTexture);
 	if (!pTexture)
@@ -49,9 +49,9 @@ void Image::ChangeTexture(SDL_Texture* pNewTexture, const RenderingConfiguration
 	configuration = newConfiguration;
 }
 
-void Image::Print(Screen& screen) const
+void SdlImage::Print(Screen& screen) const
 {
-	Window* pWindow = dynamic_cast<Window*>(&screen);
+	SdlWindow* pWindow = dynamic_cast<SdlWindow*>(&screen);
 	
 	if (pWindow != nullptr)
 	{

@@ -13,13 +13,13 @@ namespace graph
 {
 	namespace sdl
 	{
-		class Window : public Screen
+		class SdlWindow : public Screen
 		{
 		friend class Image; // TO_DO SdlImage tem acesso a pWindow mas só precisa do pRenderer. Como melhorar isto?
 
 		public:
-			explicit Window(int width, int height, std::string title = "", bool fullScreen = false);
-			~Window();
+			explicit SdlWindow(int width, int height, std::string title = "", bool fullScreen = false);
+			~SdlWindow();
 
 			void Clear() override;
 			void Update() override;

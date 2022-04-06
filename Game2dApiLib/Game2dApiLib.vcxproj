@@ -151,7 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Audio.h" />
     <ClInclude Include="src\AudioManager.h" />
+    <ClInclude Include="src\AudioPlayer.h" />
     <ClInclude Include="src\Command.h" />
     <ClInclude Include="src\GraphManager.h" />
     <ClInclude Include="src\Image.h" />
