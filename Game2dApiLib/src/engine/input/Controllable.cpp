@@ -1,5 +1,5 @@
 #include "Controllable.h"
-using namespace input;
+using namespace engine::input;
 
 #include <stdexcept>
 

@@ -18,6 +18,30 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\engine\audio\AudioManager.cpp" />
+    <ClCompile Include="src\engine\Engine.cpp" />
+    <ClCompile Include="src\engine\graph\GraphManager.cpp" />
+    <ClCompile Include="src\engine\input\Controllable.cpp" />
+    <ClCompile Include="src\engine\input\InputManager.cpp" />
+    <ClCompile Include="src\util\Unique.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\engine\audio\Audio.h" />
+    <ClInclude Include="src\engine\audio\AudioManager.h" />
+    <ClInclude Include="src\engine\audio\AudioPlayer.h" />
+    <ClInclude Include="src\engine\Engine.h" />
+    <ClInclude Include="src\engine\graph\GraphManager.h" />
+    <ClInclude Include="src\engine\graph\Image.h" />
+    <ClInclude Include="src\engine\graph\Screen.h" />
+    <ClInclude Include="src\engine\input\Controllable.h" />
+    <ClInclude Include="src\engine\input\Input.h" />
+    <ClInclude Include="src\engine\input\InputGetter.h" />
+    <ClInclude Include="src\engine\input\InputManager.h" />
+    <ClInclude Include="src\game\Game.h" />
+    <ClInclude Include="src\util\Command.h" />
+    <ClInclude Include="src\util\Unique.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -74,21 +98,25 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Plataform)$(Configuration)\$(Target)</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Plataform)$(Configuration)\$(Target)</IntDir>
+    <IncludePath>$(ProjectDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Plataform)$(Configuration)\$(Target)</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Plataform)$(Configuration)\$(Target)</IntDir>
+    <IncludePath>$(ProjectDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Plataform)$(Configuration)\$(Target)</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Plataform)$(Configuration)\$(Target)</IntDir>
+    <IncludePath>$(ProjectDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Plataform)$(Configuration)\$(Target)</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Plataform)$(Configuration)\$(Target)</IntDir>
+    <IncludePath>$(ProjectDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -150,24 +178,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Audio.h" />
-    <ClInclude Include="src\AudioManager.h" />
-    <ClInclude Include="src\AudioPlayer.h" />
-    <ClInclude Include="src\Command.h" />
-    <ClInclude Include="src\GraphManager.h" />
-    <ClInclude Include="src\Image.h" />
-    <ClInclude Include="src\Input.h" />
-    <ClInclude Include="src\InputGetter.h" />
-    <ClInclude Include="src\InputManager.h" />
-    <ClInclude Include="src\Screen.h" />
-    <ClInclude Include="src\Unique.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\GraphManager.cpp" />
-    <ClCompile Include="src\InputManager.cpp" />
-    <ClCompile Include="src\Unique.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -1,5 +1,5 @@
 #include "GraphManager.h"
-using namespace graph;
+using namespace engine::graph;
 
 GraphManager::GraphManager(Screen& newScreen) : Unique<GraphManager>(), screen(newScreen) {}
 
