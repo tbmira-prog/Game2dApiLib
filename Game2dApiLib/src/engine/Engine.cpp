@@ -1,44 +1,38 @@
 #include "Engine.h"
 using namespace engine;
 
+#include "audio/AudioPlayer.h"
+#include "graph/Screen.h"
+#include "input/InputGetter.h"
+#include "game/Game.h"
+
 Engine::Engine(game::Game& newGame, graph::Screen& screen, input::InputGetter& inputGetter, audio::AudioPlayer& audioPlayer) :
-	Unique<Engine>(), game(newGame), graphM(screen), inputM(inputGetter), audioM(audioPlayer), quit(false), playing(false)
+	Unique<Engine>(), game(newGame), graphM(screen), inputM(inputGetter), audioM(audioPlayer)
 {}
 
 Engine::~Engine() {}
 
 void Engine::Run()
 {
-	quit = false;
-	while (!quit)
+	while (!game.Quit()) // HACK Exception safety: try and catch
 	{
-		game.LoadMedia();
-		
-		playing = true;
-		while (playing)
+		try
 		{
-			inputM.GetInput(input);
-			if (!input.Quit())
+			game.StartScene();
+
+			while (game.PlayingScene())
 			{
-				inputM.HandleInput(input, game.Controllables());
+				inputM.GetInput();
+				inputM.HandleInput(game.Controllables());
 				graphM.UpdateScreen(game.Images());
 				audioM.PlaySoundEffects(game.Sounds()); // HACK Como controlar as músicas durante o gameplay?
 			}
-			else
-				Quit();
+
+			game.FinishScene();
 		}
-
-		game.FreeMedia();
+		catch (...)
+		{
+			break;
+		}
 	}
-}
-
-void Engine::Quit()
-{
-	playing = false;
-	quit = true;
-}
-
-void Engine::StopPlaying()
-{
-	playing = false;
 }

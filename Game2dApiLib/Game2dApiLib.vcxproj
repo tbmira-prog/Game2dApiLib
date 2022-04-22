@@ -23,6 +23,7 @@
     <ClCompile Include="src\engine\Engine.cpp" />
     <ClCompile Include="src\engine\graph\GraphManager.cpp" />
     <ClCompile Include="src\engine\input\Controllable.cpp" />
+    <ClCompile Include="src\engine\input\InputGetter.cpp" />
     <ClCompile Include="src\engine\input\InputManager.cpp" />
     <ClCompile Include="src\util\Unique.cpp" />
   </ItemGroup>

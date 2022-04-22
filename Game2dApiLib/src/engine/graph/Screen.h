@@ -14,7 +14,7 @@ namespace engine
 			virtual void Clear() = 0;
 			virtual void Update() = 0;
 
-		private:
+		private: // TODO Poderá haver mais de uma janela? Ou Screen deve ser Unique<Screen>?
 			Screen(const Screen&) = delete;
 			Screen& operator=(const Screen&) = delete;
 		};

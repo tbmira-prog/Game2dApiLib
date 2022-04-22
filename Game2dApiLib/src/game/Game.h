@@ -16,37 +16,46 @@ namespace game
 		Game();
 		virtual ~Game();
 
-		virtual void LoadMedia() {};
-		virtual void FreeMedia() {};
-
-		void Quit(); // HACK Como jogo irá fechar? Isso deveria ser automático. Mas é, o usuário só tem que escolher quando irá fechar o jogo
-		void StopPlaying();
+		void StartScene();
+		void FinishScene();
+		
+		inline bool Quit();
+		inline bool PlayingScene();
 
 		inline const engine::graph::ImageVector& Images() { return images; }
 		inline const engine::input::ControllableVector& Controllables() { return controllables; }
 		inline const engine::audio::MusicVector& Musics() { return musics; }
 		inline const engine::audio::SoundVector& Sounds() { return sounds; }
 
-		void Push(GameObject& object)
-		{
-			images.push_back(object.image);
-			controllables.push_back(object);
-		}
+		void Push(GameObject& object);
 
 	protected:
+		inline void QuitGame();
+		inline void StopScene();
+
 		engine::graph::ImageVector images; // HACK Automatizar o push, pop e alterar posição de Images e Controllables juntos para um mesmo objeto do jogo
 		engine::input::ControllableVector controllables; // E se images e controllables ficassem encapsulados e o usuário só pudesse usar o GameObject
 		engine::audio::MusicVector musics;
 		engine::audio::SoundVector sounds;
+
+	private:
+		bool quit;
+		bool playingScene;
+
+		virtual void LoadMedia() {};
+		virtual void FreeMedia() {};
 	};
 
 	struct GameObject : public engine::input::Controllable
 	{
-		GameObject(engine::graph::Image& i) : Controllable(), image(i) {}
+		explicit GameObject(engine::graph::Image& i) : Controllable(), image(i) {}
 		virtual ~GameObject() {}
 
 		engine::graph::Image& image;
 		virtual void HandleInput(const engine::input::Input&) = 0;
+
+		GameObject(const GameObject&); // TODO Como será feita a cópia da imagem?
+		GameObject& operator=(const GameObject&); // TODO Como será feita a cópia da imagem?
 	};
 
 }

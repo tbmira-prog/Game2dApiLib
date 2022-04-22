@@ -5,20 +5,15 @@ InputManager::InputManager(InputGetter& newInputGetter) : Unique<InputManager>()
 
 InputManager::~InputManager() {}
 
-void InputManager::GetInput(Input& input)
+void InputManager::GetInput(size_t timeOut_ms)
 {
-	inputGetter.GetInput(input);
+	inputGetter.GetInput(timeOut_ms);
 }
 
-void InputManager::WaitInput(Input& input, size_t timeOut_ms)
-{
-	inputGetter.WaitInput(input, timeOut_ms);
-}
-
-void InputManager::HandleInput(const Input& i, ControllableVector controllables)
+void InputManager::HandleInput(ControllableVector controllables) const
 {
 	for (auto controllable : controllables)
 	{
-		controllable.get().HandleInput(i);
+		controllable.get().HandleInput(inputGetter.Input());
 	}
 }
