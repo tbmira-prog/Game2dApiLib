@@ -8,17 +8,20 @@ namespace engine
 {
 	namespace audio
 	{
-		class AudioPlayer
+		class AudioPlayer : util::Unique<AudioPlayer> // HACK Design desta classe e Audio.h estão inconsistentes. AudioPlayer controla Song, mas SoundEffect usa o AudioPlayer
 		{
 		public:
-			AudioPlayer() {}
+			AudioPlayer() : util::Unique<AudioPlayer>(), currentSong(noSong) {}
 			virtual ~AudioPlayer() {};
 
-			virtual void PlaySoundEffect(const SoundEffect&) = 0;
+			void ControlMusic(Song&, const SongAction);
 
-			virtual void PlayMusic(const Music&) = 0;
-			virtual void PauseMusic(const Music&) = 0;
-			virtual void StopMusic(const Music&) = 0;
+		private:
+			/*virtual void Play(const Song&) = 0;
+			virtual void Pause(const Song&) = 0;
+			virtual void Stop(const Song&) = 0;*/
+
+			Song& currentSong;
 		};
 	}
 }

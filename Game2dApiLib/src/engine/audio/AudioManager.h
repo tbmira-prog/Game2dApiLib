@@ -10,10 +10,10 @@ namespace engine
 {
 	namespace audio
 	{
-		typedef std::vector<std::reference_wrapper<Music>> MusicVector;
+		//typedef std::vector<std::reference_wrapper<Song>> SongVector;
 		typedef std::vector<std::reference_wrapper<SoundEffect>> SoundVector;
 
-		class AudioManager : public Unique<AudioManager> // UNDONE Definir e implementar funções de AudioManager
+		class AudioManager final : public util::Unique<AudioManager> // UNDONE Definir e implementar funções de AudioManager
 		{
 		public:
 			AudioManager(AudioPlayer&);
@@ -21,12 +21,13 @@ namespace engine
 
 			void PlaySoundEffects(SoundVector);
 
-			void PlayMusics(MusicVector);
-			void PlayList(MusicVector);
-			void StopMusic();
-			void StopMusic(const Music&);
+			inline void ControlMusic(Song&, const SongAction);
+
 		private:
 			AudioPlayer& audioPlayer;
+
+			AudioManager(const AudioManager&) = delete;
+			AudioManager& operator=(const AudioManager&) = delete;
 		};
 	}
 }

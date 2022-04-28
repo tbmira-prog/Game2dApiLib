@@ -15,7 +15,7 @@ namespace engine
 	{
 		typedef std::vector<std::reference_wrapper<Image>> ImageVector; // UNDONE Vector é o conteiner mais otimizado para isto?
 
-		class GraphManager : public util::Unique<GraphManager> // UNDONE Pensar em como GraphManager poderia lidar com múltiplas janelas, ou se isso não será permitido
+		class GraphManager final : public util::Unique<GraphManager> // UNDONE Pensar em como GraphManager poderia lidar com múltiplas janelas, ou se isso não será permitido
 		{
 		public:
 			explicit GraphManager(Screen&);

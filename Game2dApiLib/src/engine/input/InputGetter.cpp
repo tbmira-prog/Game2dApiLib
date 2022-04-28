@@ -1,11 +1,9 @@
 #include "InputGetter.h"
 using namespace engine::input;
 
-InputGetter::InputGetter(Input& i, InputGetMode newMode) : Unique<InputGetter>(), input(i), mode(newMode)
-{}
+InputGetter::InputGetter(engine::input::Input& i, InputGetMode newMode) : Unique<InputGetter>(), input(i), mode(newMode) {}
 
-InputGetter::~InputGetter()
-{}
+InputGetter::~InputGetter() {}
 
 void InputGetter::GetInput(size_t timeOut_ms)
 {

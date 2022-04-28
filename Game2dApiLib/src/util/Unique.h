@@ -1,16 +1,24 @@
 #ifndef _UNIQUE_
 #define _UNIQUE_
 
-#include <cassert>
+#include <stdexcept>
+
 namespace util
 {
+	class InvalidInstantiation : public std::exception
+	{
+		const char* what() const override { return "Tried to instantiate twice a Unique class!\n"; }
+	};
+
 	template<typename T>
 	class Unique
 	{
 	public:
 		Unique()
 		{
-			assert(!instantiated); // TO_DO Trocar assert por throw ou outra coisa, pois assert só funciona em debug
+			if (instantiated)
+				throw InvalidInstantiation();
+
 			instantiated = true;
 		}
 
@@ -26,6 +34,7 @@ namespace util
 
 	template<typename T>
 	bool Unique<T>::instantiated = false;
+
 }
 
 #endif // _UNIQUE_

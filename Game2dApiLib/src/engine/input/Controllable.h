@@ -15,8 +15,8 @@ namespace engine
 		class Controllable // Hash SDL_Event.type é só fazer hash com o valor dos enum. Pode dar bom!!!!!
 		{
 		public:
-			Controllable();
-			virtual ~Controllable();
+			Controllable() {}
+			virtual ~Controllable() {}
 
 			virtual void HandleInput(const Input& input) = 0;
 

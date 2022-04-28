@@ -19,18 +19,21 @@ namespace engine
 	{
 		typedef std::vector< std::reference_wrapper<Controllable>> ControllableVector;
 
-		class InputManager : public util::Unique<InputManager> // HACK Planejar tratamento de eventos que não são inputs, por exemplo fechar programa
+		class InputManager final : public util::Unique<InputManager> // HACK Planejar tratamento de eventos que não são inputs, por exemplo fechar programa
 		{
 		public:
-			InputManager(InputGetter&);
+			explicit InputManager(InputGetter&);
 			~InputManager();
 
 			inline void GetInput(size_t timeOut_ms = 0);
 
-			void HandleInput(ControllableVector) const; // TO_DO Escrever HandleInput e também typedef ControllableVector
+			void HandleInput(ControllableVector) const;
 
 		private:
 			InputGetter& inputGetter;
+
+			InputManager(const InputManager&) = delete;
+			InputManager& operator=(const InputManager&) = delete;
 		};
 	}
 }

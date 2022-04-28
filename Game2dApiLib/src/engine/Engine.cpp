@@ -7,7 +7,7 @@ using namespace engine;
 #include "game/Game.h"
 
 Engine::Engine(game::Game& newGame, graph::Screen& screen, input::InputGetter& inputGetter, audio::AudioPlayer& audioPlayer) :
-	Unique<Engine>(), game(newGame), graphM(screen), inputM(inputGetter), audioM(audioPlayer)
+	Unique<Engine>(), game(newGame), graphManager(screen), inputManager(inputGetter), audioManager(audioPlayer)
 {}
 
 Engine::~Engine() {}
@@ -21,11 +21,12 @@ void Engine::Run()
 			game.StartScene();
 
 			while (game.PlayingScene())
-			{
-				inputM.GetInput();
-				inputM.HandleInput(game.Controllables());
-				graphM.UpdateScreen(game.Images());
-				audioM.PlaySoundEffects(game.Sounds()); // HACK Como controlar as músicas durante o gameplay?
+			{ // TODO Cada biblioteca deve implementar as funções para lidar com Quit, Resize, etc. Por exemplo, SdlGame já coloca um controllable no vetor para tratar estes eventos
+				inputManager.GetInput();
+				inputManager.HandleInput(game.Controllables());
+				graphManager.UpdateScreen(game.Images());
+				audioManager.PlaySoundEffects(game.Sounds());
+				audioManager.ControlMusic(game.CurrentSong(), game.SongAction());
 			}
 
 			game.FinishScene();

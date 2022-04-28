@@ -3,7 +3,7 @@
 
 namespace input
 {
-	class Command // TODO Pensar sobre comportamento quanto a cópia, atribuição, ... de objetos desta classe
+	class Command // HACK Pensar sobre comportamento quanto a cópia, atribuição, ... de objetos desta classe
 	{
 	public:
 		Command() {};

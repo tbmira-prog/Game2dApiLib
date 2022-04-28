@@ -12,7 +12,7 @@
 
 namespace engine
 {
-	class Engine : public util::Unique<Engine>
+	class Engine final : public util::Unique<Engine>
 	{
 	public:
 		explicit Engine(game::Game&, graph::Screen&, input::InputGetter&, audio::AudioPlayer&);
@@ -21,11 +21,15 @@ namespace engine
 		void Run();
 
 	private:
-		graph::GraphManager graphM;
-		input::InputManager inputM;
-		audio::AudioManager audioM;
+		graph::GraphManager graphManager;
+		input::InputManager inputManager;
+		audio::AudioManager audioManager;
 
 		game::Game& game;
+
+	private:
+		Engine(const Engine&) = delete;
+		Engine& operator=(const Engine&) = delete;
 	};
 }
 

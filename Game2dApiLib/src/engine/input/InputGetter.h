@@ -13,7 +13,7 @@ namespace engine
 		class InputGetter : public util::Unique<InputGetter>
 		{
 		public:
-			InputGetter(Input& i, InputGetMode newMode = InputGetMode::POOL_INPUT);
+			explicit InputGetter(Input& i, InputGetMode newMode = InputGetMode::POOL_INPUT);
 			virtual ~InputGetter();
 
 			void GetInput(size_t timeOut_ms);
@@ -27,6 +27,9 @@ namespace engine
 
 			input::Input& input;
 			InputGetMode mode;
+
+			InputGetter(const InputGetter&) = delete;
+			InputGetter& operator=(const InputGetter&) = delete;
 		};
 	}
 }

@@ -5,20 +5,16 @@ AudioManager::AudioManager(AudioPlayer& newAudioPlayer) : Unique<AudioManager>()
 
 AudioManager::~AudioManager() {}
 
-AudioManager::PlaySoundEffects(SoundVector sounds)
+void AudioManager::PlaySoundEffects(SoundVector sounds)
 {
 	for (auto sound : sounds)
-		audioPlayer.PlaySoundEffect(sound);
+		//audioPlayer.PlaySoundEffect(sound);
+		sound.get().Play(audioPlayer);
+
+	sounds.erase(sounds.begin(), sounds.end());
 }
 
-AudioManager::
-
-AudioManager::
-
-AudioManager::
-
-AudioManager::
-
-AudioManager::
-
-AudioManager::
+void AudioManager::ControlMusic(Song& song, const SongAction action)
+{
+	audioPlayer.ControlMusic(song, action);
+}
