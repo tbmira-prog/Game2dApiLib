@@ -5,36 +5,24 @@
 //#include <unordered_map>
 #include <vector>
 
-#include "util/Command.h"
+#include "engine/input/undoRedo/Command.h"
 #include "Input.h"
 
 namespace engine
 {
 	namespace input
 	{
-		class Controllable // Hash SDL_Event.type é só fazer hash com o valor dos enum. Pode dar bom!!!!!
+		class Controllable
 		{
 		public:
 			Controllable() {}
 			virtual ~Controllable() {}
 
 			virtual void HandleInput(const Input& input) = 0;
-
-			//void SetCommandInput(const Input& input, const Command& command);
-
-		//private:
-			//std::unordered_map < std::reference_wrapper<Input>, std::reference_wrapper<Command> > commandMap;
 		};
-		// Os inputs e comandos irão ficar armazenados no objeto Controllable
-		// Eles devem ser referência por causa que Input e Command são classes polimórficas e virtuais puras
-		//		STL não lida bem com polimorfismo
-		//		Perigo dos objetos sairem do escopo onde foram criadas e deixarem referências inválidas no map
-		// Solução: map deve copiar os inputs e commandos e armazenar referências para estas cópias
-		//		Perigo de só copiar a parte da classe base e não o objeto completo!!!
-		//		Ponto negativo é que vai usar muito a Heap, e criar muitas cópias desnecessárias do mesmo Input
-		//		Ou declara tudo no começo, na stack mesmo e guarda a referência para a stack. Só tem que dar um jeito de garantir isso: que será declarado os inputs e comandos no começo
-		//		Parecido com as imagens, elas devem ser criadas no começo e guardar várias referências para as poucas imagens criadas.
 	}
 }
 
 #endif // _CONTROLLABLE_
+
+//std::unordered_map < std::reference_wrapper<Input>, std::reference_wrapper<Command> > commandMap;

@@ -1,11 +1,13 @@
 #ifndef _SCREEN_
 #define _SCREEN_
+ 
+#include "util/Unique.h"
 
 namespace engine
 {
 	namespace graph
 	{
-		class Screen
+		class Screen : public util::Unique<Screen>
 		{
 		public:
 			Screen() {};
@@ -14,7 +16,7 @@ namespace engine
 			virtual void Clear() = 0;
 			virtual void Update() = 0;
 
-		private: // TODO Poderá haver mais de uma janela? Ou Screen deve ser Unique<Screen>?
+		private:
 			Screen(const Screen&) = delete;
 			Screen& operator=(const Screen&) = delete;
 		};

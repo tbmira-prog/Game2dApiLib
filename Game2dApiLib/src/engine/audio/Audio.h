@@ -29,11 +29,14 @@ namespace engine
 			Song() : playing(false) {};
 			virtual ~Song() {};
 
-			Song(const Song&); // HACK Como ficará o atributo playing quando um Song for copiado?
+			Song(const Song&);
 			Song& operator=(const Song&);
 
-			//virtual bool operator==(const Song&) = 0;
-			virtual bool operator!=(const Song& s) const = 0;// HACK Isto não define != para subclasses
+			virtual bool operator==(const Song&) const = 0;
+			bool operator!=(const Song& s) const
+			{
+				return !(*this == s);
+			}
 
 			virtual void Play(AudioPlayer&) = 0;
 			virtual void Pause(AudioPlayer&) = 0;
@@ -51,17 +54,17 @@ namespace engine
 			SongAction action;
 		};
 
-		class None : public Song, public util::Unique<None>
+		class None final : public Song, public util::Unique<None>
 		{
 		public:
 			None() : Song(), util::Unique<None>() {}
 			~None() {}
 
-			bool operator!=(const Song& song) const override
+			bool operator==(const Song& song) const override
 			{
-				return this != &song;
+				return this == &song;
 			}
-
+			
 		private:			
 			void Play(AudioPlayer&) {} 
 			void Pause(AudioPlayer&) {}
@@ -71,7 +74,18 @@ namespace engine
 			None& operator=(const None&) = delete;
 		};
 
-		None noSong;
+		None noSong; // HACK Resolver Link Warning
+
+		class Silence final : public SoundEffect, public util::Unique<Silence>
+		{
+		public:
+			Silence() : SoundEffect(), util::Unique<Silence>() {}
+			~Silence() {}
+
+			void Play(AudioPlayer&) const override {}
+		};
+
+		Silence silence; // HACK Resolver Link Warning
 	}
 }
 

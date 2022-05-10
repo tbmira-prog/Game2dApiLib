@@ -8,10 +8,10 @@ AudioManager::~AudioManager() {}
 void AudioManager::PlaySoundEffects(SoundVector sounds)
 {
 	for (auto sound : sounds)
-		//audioPlayer.PlaySoundEffect(sound);
+	{
 		sound.get().Play(audioPlayer);
-
-	sounds.erase(sounds.begin(), sounds.end());
+		sound.get() = silence;
+	}
 }
 
 void AudioManager::ControlMusic(Song& song, const SongAction action)

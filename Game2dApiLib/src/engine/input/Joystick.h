@@ -1,5 +1,5 @@
-#ifndef _INPUT_GETTER_
-#define _INPUT_GETTER_
+#ifndef _JOYSTICK_
+#define _JOYSTICK_
 
 #include "util/Unique.h"
 #include "Input.h"
@@ -10,11 +10,11 @@ namespace engine
 	{
 		enum class InputGetMode { POOL_INPUT, WAIT_INPUT };
 
-		class InputGetter : public util::Unique<InputGetter>
+		class Joystick : public util::Unique<Joystick>
 		{
 		public:
-			explicit InputGetter(Input& i, InputGetMode newMode = InputGetMode::POOL_INPUT);
-			virtual ~InputGetter();
+			explicit Joystick(Input& i, InputGetMode newMode = InputGetMode::POOL_INPUT);
+			virtual ~Joystick();
 
 			void GetInput(size_t timeOut_ms);
 			inline const Input& Input() const;
@@ -28,10 +28,10 @@ namespace engine
 			input::Input& input;
 			InputGetMode mode;
 
-			InputGetter(const InputGetter&) = delete;
-			InputGetter& operator=(const InputGetter&) = delete;
+			Joystick(const Joystick&) = delete;
+			Joystick& operator=(const Joystick&) = delete;
 		};
 	}
 }
 
-#endif // _INPUT_GETTER_
+#endif // _JOYSTICK_

@@ -19,14 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\engine\audio\Audio.cpp" />
     <ClCompile Include="src\engine\audio\AudioManager.cpp" />
     <ClCompile Include="src\engine\audio\AudioPlayer.cpp" />
     <ClCompile Include="src\engine\Engine.cpp" />
     <ClCompile Include="src\engine\graph\GraphManager.cpp" />
-    <ClCompile Include="src\engine\input\Controllable.cpp" />
-    <ClCompile Include="src\engine\input\InputGetter.cpp" />
     <ClCompile Include="src\engine\input\InputManager.cpp" />
-    <ClCompile Include="src\util\Unique.cpp" />
+    <ClCompile Include="src\engine\input\Joystick.cpp" />
+    <ClCompile Include="src\game\Game.cpp" />
+    <ClCompile Include="src\game\GameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\audio\Audio.h" />
@@ -40,6 +41,7 @@
     <ClInclude Include="src\engine\input\Input.h" />
     <ClInclude Include="src\engine\input\InputGetter.h" />
     <ClInclude Include="src\engine\input\InputManager.h" />
+    <ClInclude Include="src\engine\input\Joystick.h" />
     <ClInclude Include="src\game\Game.h" />
     <ClInclude Include="src\util\Command.h" />
     <ClInclude Include="src\util\Unique.h" />

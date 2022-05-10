@@ -15,7 +15,7 @@ namespace engine
 	class Engine final : public util::Unique<Engine>
 	{
 	public:
-		explicit Engine(game::Game&, graph::Screen&, input::InputGetter&, audio::AudioPlayer&);
+		explicit Engine(game::Game&, graph::Screen&, input::Joystick&, audio::AudioPlayer&);
 		~Engine();
 
 		void Run();

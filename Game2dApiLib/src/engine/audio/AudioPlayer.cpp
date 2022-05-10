@@ -1,7 +1,7 @@
 #include "AudioPlayer.h"
 using namespace engine::audio;
 
-void AudioPlayer::ControlMusic(Song& song, const SongAction action)
+void AudioPlayer::ControlMusic(Song& song, const SongAction action) // UNDONE Função muito grande
 {
 	if (song == noSong)
 		return;
@@ -9,26 +9,22 @@ void AudioPlayer::ControlMusic(Song& song, const SongAction action)
 	switch (action)
 	{
 	case SongAction::PLAY:
-		if (song != currentSong)
+		if (song == currentSong)
 		{
-			//Stop(currentSong);
-			//Play(song);
+			if (!currentSong.Playing())
+				currentSong.Play(*this);
+		}
+		else
+		{
 			currentSong.Stop(*this);
 			song.Play(*this);
 		}
-		else if (!currentSong.Playing())
-			//Play(currentSong);
-			currentSong.Play(*this);
 		break;
 	case SongAction::PAUSE:
-		if (currentSong.Playing())
-			//Pause(currentSong);
-			currentSong.Pause(*this);
+		currentSong.Pause(*this);
 		break;
 	case SongAction::STOP:
-		if (currentSong.Playing())
-			//Stop(currentSong);
-			currentSong.Stop(*this);
+		currentSong.Stop(*this);
 		break;
 	}
 }

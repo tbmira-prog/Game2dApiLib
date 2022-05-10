@@ -3,10 +3,10 @@ using namespace engine;
 
 #include "audio/AudioPlayer.h"
 #include "graph/Screen.h"
-#include "input/InputGetter.h"
+#include "input/Joystick.h"
 #include "game/Game.h"
 
-Engine::Engine(game::Game& newGame, graph::Screen& screen, input::InputGetter& inputGetter, audio::AudioPlayer& audioPlayer) :
+Engine::Engine(game::Game& newGame, graph::Screen& screen, input::Joystick& inputGetter, audio::AudioPlayer& audioPlayer) :
 	Unique<Engine>(), game(newGame), graphManager(screen), inputManager(inputGetter), audioManager(audioPlayer)
 {}
 
