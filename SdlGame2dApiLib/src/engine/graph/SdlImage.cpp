@@ -1,6 +1,6 @@
 #include "SdlImage.h"
 #include "SdlWindow.h"
-using namespace graph::sdl;
+using namespace engine::graph::sdl;
 
 SdlImage::SdlImage() : Image(), pTexture(), configuration() {}
 

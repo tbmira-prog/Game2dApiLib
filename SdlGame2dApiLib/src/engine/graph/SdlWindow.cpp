@@ -12,7 +12,8 @@
 #include <SDL_image.h>
 
 #include "SdlWindow.h"
-using namespace graph::sdl;
+#include "SdlWindowException.h"
+using namespace engine::graph::sdl;
 
 void HideConsole()
 {

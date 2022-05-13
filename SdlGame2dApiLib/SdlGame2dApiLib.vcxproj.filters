@@ -15,33 +15,54 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\SdlImage.cpp">
+    <ClCompile Include="src\engine\input\SdlJoystick.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="src\SdlInput.cpp">
+    <ClCompile Include="src\engine\input\SdlInput.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="src\SdlInputGetter.cpp">
+    <ClCompile Include="src\engine\graph\SdlImage.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="src\SdlWindow.cpp">
+    <ClCompile Include="src\engine\graph\SdlWindow.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\audio\SdlAudio.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\audio\SdlAudioPlayer.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\SdlImage.h">
+    <ClInclude Include="src\engine\audio\SdlAudio.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="src\SdlInput.h">
+    <ClInclude Include="src\engine\audio\SdlAudioPlayer.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="src\SdlInputGetter.h">
+    <ClInclude Include="src\engine\graph\SdlWindowException.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="src\SdlWindow.h">
+    <ClInclude Include="src\engine\input\SdlJoyStick.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="src\RenderingConfiguration.h">
+    <ClInclude Include="src\engine\input\SdlInput.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\graph\RenderingConfiguration.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\graph\SdlImage.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\graph\SdlWindow.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\SdlGame.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\SdlGameObject.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>

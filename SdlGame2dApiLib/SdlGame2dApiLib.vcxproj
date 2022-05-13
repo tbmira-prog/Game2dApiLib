@@ -598,17 +598,24 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\SdlImage.cpp" />
-    <ClCompile Include="src\SdlInput.cpp" />
-    <ClCompile Include="src\SdlInputGetter.cpp" />
-    <ClCompile Include="src\SdlWindow.cpp" />
+    <ClCompile Include="src\engine\audio\SdlAudio.cpp" />
+    <ClCompile Include="src\engine\audio\SdlAudioPlayer.cpp" />
+    <ClCompile Include="src\engine\graph\SdlImage.cpp" />
+    <ClCompile Include="src\engine\graph\SdlWindow.cpp" />
+    <ClCompile Include="src\engine\input\SdlInput.cpp" />
+    <ClCompile Include="src\engine\input\SdlJoystick.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\RenderingConfiguration.h" />
-    <ClInclude Include="src\SdlImage.h" />
-    <ClInclude Include="src\SdlInput.h" />
-    <ClInclude Include="src\SdlInputGetter.h" />
-    <ClInclude Include="src\SdlWindow.h" />
+    <ClInclude Include="src\engine\audio\SdlAudio.h" />
+    <ClInclude Include="src\engine\audio\SdlAudioPlayer.h" />
+    <ClInclude Include="src\engine\graph\RenderingConfiguration.h" />
+    <ClInclude Include="src\engine\graph\SdlImage.h" />
+    <ClInclude Include="src\engine\graph\SdlWindow.h" />
+    <ClInclude Include="src\engine\graph\SdlWindowException.h" />
+    <ClInclude Include="src\engine\input\SdlInput.h" />
+    <ClInclude Include="src\engine\input\SdlJoyStick.h" />
+    <ClInclude Include="src\game\SdlGame.h" />
+    <ClInclude Include="src\game\SdlGameObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
