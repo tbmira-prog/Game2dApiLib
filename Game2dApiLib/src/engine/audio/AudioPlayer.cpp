@@ -17,6 +17,7 @@ void AudioPlayer::ControlMusic(Song& song, const SongAction action) // UNDONE Fu
 		else
 		{
 			currentSong.Stop(*this);
+			currentSong = song;
 			song.Play(*this);
 		}
 		break;
@@ -25,6 +26,7 @@ void AudioPlayer::ControlMusic(Song& song, const SongAction action) // UNDONE Fu
 		break;
 	case SongAction::STOP:
 		currentSong.Stop(*this);
+		currentSong = noSong;
 		break;
 	}
 }

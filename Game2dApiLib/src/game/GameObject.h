@@ -5,6 +5,9 @@
 #include "engine/input/Controllable.h"
 #include "engine/input/Input.h"
 
+#include "engine/audio/NullAudio.h"
+#include "engine/graph/NullImage.h"
+
 namespace game
 {
 	struct GameObject : public engine::input::Controllable

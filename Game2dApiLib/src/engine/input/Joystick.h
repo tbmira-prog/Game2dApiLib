@@ -21,12 +21,13 @@ namespace engine
 		
 			inline void ChangeMode(InputGetMode newMode);
 
+		protected:
+			input::Input& input;
+			InputGetMode mode;
+
 		private:
 			virtual void PoolInput() = 0;
 			virtual void WaitInput(size_t timeOut_ms) = 0;
-
-			input::Input& input;
-			InputGetMode mode;
 
 			Joystick(const Joystick&) = delete;
 			Joystick& operator=(const Joystick&) = delete;

@@ -22,6 +22,8 @@ namespace engine
 
 			inline void ControlMusic(Song&, const SongAction);
 
+			inline bool Muted() const { return audioPlayer.Muted(); }
+
 		private:
 			AudioPlayer& audioPlayer;
 

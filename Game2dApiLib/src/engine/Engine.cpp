@@ -24,9 +24,13 @@ void Engine::Run()
 			{ // TODO Cada biblioteca deve implementar as funções para lidar com Quit, Resize, etc. Por exemplo, SdlGame já coloca um controllable no vetor para tratar estes eventos
 				inputManager.GetInput();
 				inputManager.HandleInput(game.Controllables());
+				game.Logic();
 				graphManager.UpdateScreen(game.Images());
-				audioManager.PlaySoundEffects(game.Sounds());
-				audioManager.ControlMusic(game.CurrentSong(), game.SongAction());
+				if (!audioManager.Muted())
+				{
+					audioManager.PlaySoundEffects(game.Sounds());
+					audioManager.ControlMusic(game.CurrentSong(), game.SongAction());
+				}
 			}
 
 			game.FinishScene();

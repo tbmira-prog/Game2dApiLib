@@ -1,8 +1,6 @@
 #ifndef _AUDIO_
 #define _AUDIO_
 
-#include "util/Unique.h"
-
 namespace engine
 {
 	namespace audio
@@ -20,7 +18,7 @@ namespace engine
 			SoundEffect(const SoundEffect&) = default;
 			SoundEffect& operator=(const SoundEffect&) = default;
 
-			virtual void Play(AudioPlayer&) const = 0;
+			virtual void Play(AudioPlayer&) = 0;
 		};
 
 		class Song
@@ -53,40 +51,7 @@ namespace engine
 			Song& song;
 			SongAction action;
 		};
-
-		class None final : public Song, public util::Unique<None>
-		{
-		public:
-			None() : Song(), util::Unique<None>() {}
-			~None() {}
-
-			bool operator==(const Song& song) const override
-			{
-				return this == &song;
-			}
-			
-		private:			
-			void Play(AudioPlayer&) {} 
-			void Pause(AudioPlayer&) {}
-			void Stop(AudioPlayer&) {}
-
-			None(const None&) = delete;
-			None& operator=(const None&) = delete;
-		};
-
-		None noSong; // HACK Resolver Link Warning
-
-		class Silence final : public SoundEffect, public util::Unique<Silence>
-		{
-		public:
-			Silence() : SoundEffect(), util::Unique<Silence>() {}
-			~Silence() {}
-
-			void Play(AudioPlayer&) const override {}
-		};
-
-		Silence silence; // HACK Resolver Link Warning
 	}
 }
 
-#endif _AUDIO_
+#endif // _AUDIO_

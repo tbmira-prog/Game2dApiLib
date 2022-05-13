@@ -33,9 +33,11 @@
     <ClInclude Include="src\engine\audio\Audio.h" />
     <ClInclude Include="src\engine\audio\AudioManager.h" />
     <ClInclude Include="src\engine\audio\AudioPlayer.h" />
+    <ClInclude Include="src\engine\audio\NullAudio.h" />
     <ClInclude Include="src\engine\Engine.h" />
     <ClInclude Include="src\engine\graph\GraphManager.h" />
     <ClInclude Include="src\engine\graph\Image.h" />
+    <ClInclude Include="src\engine\graph\NullImage.h" />
     <ClInclude Include="src\engine\graph\Screen.h" />
     <ClInclude Include="src\engine\input\Controllable.h" />
     <ClInclude Include="src\engine\input\Input.h" />
@@ -43,6 +45,7 @@
     <ClInclude Include="src\engine\input\InputManager.h" />
     <ClInclude Include="src\engine\input\Joystick.h" />
     <ClInclude Include="src\game\Game.h" />
+    <ClInclude Include="src\game\GameObject.h" />
     <ClInclude Include="src\util\Command.h" />
     <ClInclude Include="src\util\Unique.h" />
   </ItemGroup>

@@ -20,16 +20,6 @@ namespace engine
 			virtual void Print(Screen& screen) const = 0;
 		};
 
-		class Invisible : public Image, public util::Unique<Invisible>
-		{
-		public:
-			Invisible() : Image(), Unique<Invisible>() {}
-			~Invisible() {}
-
-			void Print(Screen&) const override {}
-		};
-
-		Invisible invisible; // HACK Resolver Link Warning
 	}
 }
 
