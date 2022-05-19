@@ -75,7 +75,7 @@ void SdlWindow::Update()
 	SDL_RenderPresent(pRenderer);
 }
 
-std::shared_ptr<SDL_Texture> SdlWindow::CreateTexture(std::string filePath)
+std::shared_ptr<SDL_Texture> SdlWindow::CreateTexture(std::string filePath) const
 {
 	SDL_Surface* loadedSurface = IMG_Load(filePath.c_str());
 	if (loadedSurface == NULL)
@@ -93,7 +93,7 @@ std::shared_ptr<SDL_Texture> SdlWindow::CreateTexture(std::string filePath)
 		throw FailedToCreateTexture();
 }
 
-std::shared_ptr<SDL_Texture> SdlWindow::CreateTexture(std::string filePath, const SDL_Color& transparencyColor) // UNDONE Código duplicado
+std::shared_ptr<SDL_Texture> SdlWindow::CreateTexture(std::string filePath, const SDL_Color& transparencyColor) const // UNDONE Código duplicado
 {
 	SDL_Surface* loadedSurface = IMG_Load(filePath.c_str());
 	if (loadedSurface == NULL)
@@ -111,6 +111,20 @@ std::shared_ptr<SDL_Texture> SdlWindow::CreateTexture(std::string filePath, cons
 	}
 	else
 		throw FailedToCreateTexture();
+}
+
+size_t SdlWindow::Width() const
+{
+	int w = 0, h = 0;
+	SDL_GetWindowSize(pWindow, &w, &h);
+	return w;
+}
+
+size_t SdlWindow::Height() const
+{
+	int w = 0, h = 0;
+	SDL_GetWindowSize(pWindow, &w, &h);
+	return h;
 }
 
 //void DeleteTexture(SDL_Texture* texture)

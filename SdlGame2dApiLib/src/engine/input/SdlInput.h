@@ -18,11 +18,17 @@ namespace engine
 			public:
 				SdlInput();
 				SdlInput(const SDL_Event&);
+				SdlInput(const SDL_EventType& type, const SDL_Keycode& sym);
+				SdlInput(const SDL_EventType& type, Uint8 button, Uint8 clicks);
+				SdlInput(const SDL_EventType& type, Uint32 direction);
 
 				virtual ~SdlInput();
 
 				bool operator==(const input::Input&) const override; // HACK Criar outros comparadores (SDL_Event, etc.)
 				bool operator==(const SDL_Event&) const;
+				bool operator==(const SDL_EventType&) const;
+
+				const SDL_Event& Event() const { return sdlEvent; }
 
 				bool Quit() const override;
 				bool Undo() const override;

@@ -122,6 +122,11 @@ bool SdlInput::operator==(const SDL_Event& e) const
 		return false;
 }
 
+bool SdlInput::operator==(const SDL_EventType& type) const
+{
+	return sdlEvent.type == type;
+}
+
 bool SdlInput::Quit() const
 {
 	return sdlEvent.type == SDL_QUIT;

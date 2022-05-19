@@ -49,12 +49,12 @@ namespace engine
 				RenderingConfiguration(SDL_Texture* pTexture) : renderQuad(), clip(), rotation() {
 					int w = 0, h = 0;
 					SDL_QueryTexture(pTexture, NULL, NULL, &w, &h);
-					SetRenderQuad({ 0, 0, w, h });
+					renderQuad = { 0, 0, w, h };
 				}
 
-				RenderingConfiguration(const RenderQuad& rQ, const Clip& c, const Rotation& rt) : renderQuad(rQ), clip(c), rotation(rt) {};
+				//RenderingConfiguration(const RenderQuad& rQ, const Clip& c, const Rotation& rt) : renderQuad(rQ), clip(c), rotation(rt) {};
 
-				void SetRenderQuad(const RenderQuad& r)
+				/*void SetRenderQuad(const RenderQuad& r)
 				{
 					if (r.renderQuad.x < 0 || r.renderQuad.y < 0 || r.renderQuad.w < 0 || r.renderQuad.h < 0)
 						throw std::logic_error("Negatives values in renderQuad!");
@@ -81,9 +81,9 @@ namespace engine
 				}
 				Rotation GetRotation() const { return rotation; }
 
-//			private:
-				RenderQuad renderQuad;
-				Clip clip;
+//			private:*/
+				SDL_Rect renderQuad;
+				SDL_Rect clip;
 				Rotation rotation;
 			};
 		}

@@ -14,26 +14,26 @@ Engine::~Engine() {}
 
 void Engine::Run()
 {
-	while (!game.Quit()) // HACK Exception safety: try and catch
+	while (!game.pCurrentScene->Quit()) // HACK Exception safety: try and catch
 	{
 		try
 		{
-			game.StartScene();
+			game.pCurrentScene->Start();
 
-			while (game.PlayingScene())
+			while (game.pCurrentScene->Playing())
 			{ // TODO Cada biblioteca deve implementar as funções para lidar com Quit, Resize, etc. Por exemplo, SdlGame já coloca um controllable no vetor para tratar estes eventos
 				inputManager.GetInput();
-				inputManager.HandleInput(game.Controllables());
-				game.Logic();
-				graphManager.UpdateScreen(game.Images());
+				inputManager.HandleInput(game.pCurrentScene->Controllables());
+				game.pCurrentScene->Logic();
+				graphManager.UpdateScreen(game.pCurrentScene->Images());
 				if (!audioManager.Muted())
 				{
-					audioManager.PlaySoundEffects(game.Sounds());
-					audioManager.ControlMusic(game.CurrentSong(), game.SongAction());
+					audioManager.PlaySoundEffects(game.pCurrentScene->Sounds());
+					audioManager.ControlMusic(game.pCurrentScene->CurrentSong(), game.pCurrentScene->SongAction());
 				}
 			}
 
-			game.FinishScene();
+			game.ChangeScene();
 		}
 		catch (...)
 		{

@@ -55,14 +55,14 @@ void SdlImage::Print(Screen& screen) const
 	
 	if (pWindow != nullptr)
 	{
-		SDL_Rect clip = configuration.GetClip().clip;
-		SDL_Rect renderQuad = configuration.GetRenderQuad().renderQuad;
-		SDL_Point center = configuration.GetRotation().center;
-		SDL_RendererFlip flip = configuration.GetRotation().flip;
+		SDL_Rect clip = configuration.clip;
+		SDL_Rect renderQuad = configuration.renderQuad;
+		SDL_Point center = configuration.rotation.center;
+		SDL_RendererFlip flip = configuration.rotation.flip;
 
 		SDL_RenderCopyEx(pWindow->pRenderer, &(*pTexture),  // TO_DO Melhorar o modo como Window->pRenderer é acessado
 			&clip,
 			&renderQuad,
-			configuration.GetRotation().angle, &center, flip);
+			configuration.rotation.angle, &center, flip);
 	}
 }

@@ -1,13 +1,13 @@
 #ifndef _KEYBOARD_GETTER_
 #define _KEYBOARD_GETTER_
 
-#include "InputGetter.h"
+#include "engine/input/Joystick.h"
 
 namespace input
 {
 	namespace terminal
 	{
-		class KeyboardGetter : public InputGetter
+		class KeyboardGetter : public Joystick
 		{
 		public:
 			KeyboardGetter() {};

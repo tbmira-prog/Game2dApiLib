@@ -16,6 +16,9 @@ namespace engine
 			virtual void Clear() = 0;
 			virtual void Update() = 0;
 
+			virtual size_t Height() const { return 0; }
+			virtual size_t Width() const { return 0; }
+
 		private:
 			Screen(const Screen&) = delete;
 			Screen& operator=(const Screen&) = delete;

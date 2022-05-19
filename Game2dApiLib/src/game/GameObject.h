@@ -1,5 +1,5 @@
 #ifndef _GAME_OBJECT_
-#define _GAME__OBJECT_
+#define _GAME_OBJECT_
 
 #include "engine/graph/Image.h"
 #include "engine/input/Controllable.h"
@@ -20,6 +20,7 @@ namespace game
 		virtual ~GameObject() {}
 
 		virtual void HandleInput(const engine::input::Input&) = 0;
+		virtual void LoadMedia() = 0;
 
 		engine::graph::Image& image;
 		engine::audio::SoundEffect& soundEffect;
@@ -31,9 +32,10 @@ namespace game
 
 	struct StaticGameObject final : public GameObject
 	{
-		explicit StaticGameObject(engine::graph::Image& i) : GameObject(i) {}
+		explicit StaticGameObject(engine::graph::Image& i = engine::graph::invisible) : GameObject(i) {}
 		~StaticGameObject() {}
 
+		virtual void LoadMedia() = 0;
 		void HandleInput(const engine::input::Input&) override {}
 	};
 
@@ -42,8 +44,9 @@ namespace game
 		Controller() {}
 		virtual ~Controller() {}
 
+		void LoadMedia() {}
 		virtual void HandleInput(const engine::input::Input&) override = 0;
 	};
 }
 
-#endif // _GAME_OBJECT
+#endif // _GAME_OBJECT_

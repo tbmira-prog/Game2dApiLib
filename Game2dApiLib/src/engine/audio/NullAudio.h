@@ -28,7 +28,7 @@ namespace engine
 			NullSong& operator=(const NullSong&) = delete;
 		};
 
-		NullSong noSong; // HACK Resolver Link Warning
+		static NullSong noSong;
 
 		class NullSoundEffect final : public SoundEffect, public util::Unique<NullSoundEffect>
 		{
@@ -39,7 +39,7 @@ namespace engine
 			void Play(AudioPlayer&) override {}
 		};
 
-		NullSoundEffect silence; // HACK Resolver Link Warning
+		static NullSoundEffect silence; // HACK Resolver Link Warning
 	}
 }
 

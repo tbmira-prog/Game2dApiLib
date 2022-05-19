@@ -17,7 +17,7 @@ namespace engine
 			void Print(Screen&) const override {}
 		};
 
-		NullImage invisible; // HACK Resolver Link Warning
+		static NullImage invisible;
 	}
 }
 

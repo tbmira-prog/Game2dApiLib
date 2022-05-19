@@ -614,6 +614,7 @@
     <ClInclude Include="src\engine\graph\SdlWindowException.h" />
     <ClInclude Include="src\engine\input\SdlInput.h" />
     <ClInclude Include="src\engine\input\SdlJoyStick.h" />
+    <ClInclude Include="src\game\objects\SdlButton.h" />
     <ClInclude Include="src\game\SdlGame.h" />
     <ClInclude Include="src\game\SdlGameObject.h" />
   </ItemGroup>

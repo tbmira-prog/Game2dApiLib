@@ -25,8 +25,11 @@ namespace engine
 				void Clear() override;
 				void Update() override;
 
-				std::shared_ptr<SDL_Texture> CreateTexture(std::string filePath);
-				std::shared_ptr<SDL_Texture> CreateTexture(std::string filePath, const SDL_Color& transparencyColor);
+				std::shared_ptr<SDL_Texture> CreateTexture(std::string filePath) const;
+				std::shared_ptr<SDL_Texture> CreateTexture(std::string filePath, const SDL_Color& transparencyColor) const;
+
+				size_t Width() const override;
+				size_t Height() const override;
 
 			private:
 				SDL_Window* pWindow;

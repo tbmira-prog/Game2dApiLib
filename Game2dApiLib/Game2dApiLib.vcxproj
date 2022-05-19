@@ -28,6 +28,9 @@
     <ClCompile Include="src\engine\input\Joystick.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\game\GameObject.cpp" />
+    <ClCompile Include="src\game\MainController.cpp" />
+    <ClCompile Include="src\game\ObjectVector.cpp" />
+    <ClCompile Include="src\game\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\audio\Audio.h" />
@@ -46,6 +49,9 @@
     <ClInclude Include="src\engine\input\Joystick.h" />
     <ClInclude Include="src\game\Game.h" />
     <ClInclude Include="src\game\GameObject.h" />
+    <ClInclude Include="src\game\MainController.h" />
+    <ClInclude Include="src\game\ObjectVector.h" />
+    <ClInclude Include="src\game\Scene.h" />
     <ClInclude Include="src\util\Command.h" />
     <ClInclude Include="src\util\Unique.h" />
   </ItemGroup>
