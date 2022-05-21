@@ -1,14 +1,13 @@
 #include "Engine.h"
 using namespace engine;
 
-#include "audio/AudioPlayer.h"
-#include "graph/Screen.h"
-#include "input/Joystick.h"
-#include "game/Game.h"
+graph::Screen* Engine::pScreen = nullptr;
 
 Engine::Engine(game::Game& newGame, graph::Screen& screen, input::Joystick& inputGetter, audio::AudioPlayer& audioPlayer) :
 	Unique<Engine>(), game(newGame), graphManager(screen), inputManager(inputGetter), audioManager(audioPlayer)
-{}
+{
+	pScreen = &screen;
+}
 
 Engine::~Engine() {}
 
@@ -40,4 +39,9 @@ void Engine::Run()
 			break;
 		}
 	}
+}
+
+const graph::Screen& Engine::Screen()
+{
+	return *pScreen;
 }

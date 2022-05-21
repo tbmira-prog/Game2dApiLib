@@ -13,7 +13,7 @@ namespace game
 	friend class MainController;
 
 	public:
-		Scene(Game&);
+		Scene();
 		virtual ~Scene();
 
 		void Start();
@@ -40,7 +40,6 @@ namespace game
 	private:
 		bool playing, quit;
 		Scene* next;
-		Game& game;
 	};
 }
 

@@ -1,7 +1,7 @@
 #include "Scene.h"
 using namespace game;
 
-Scene::Scene(Game& g) : objects(), playing(false), quit(false), next(this), game(g) {}
+Scene::Scene() : objects(), playing(false), quit(false), next(this) {}
 
 Scene::~Scene()
 {
@@ -28,6 +28,6 @@ void Scene::QuitGame()
 
 void Scene::LoadMedia()
 {
-	//for (auto object : objects)
+	//for (auto object : objects) // HACK Iterar nos GameObjects
 	//	object.LoadMedia();
 }
