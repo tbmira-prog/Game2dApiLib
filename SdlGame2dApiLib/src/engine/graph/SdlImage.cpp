@@ -1,3 +1,5 @@
+#include "engine/Engine.h"
+
 #include "SdlImage.h"
 #include "SdlWindow.h"
 using namespace engine::graph::sdl;
@@ -39,6 +41,20 @@ SdlImage& SdlImage::operator=(const SdlImage& otherImage)
 }
 
 SdlImage::~SdlImage() {}
+
+void SdlImage::ChangeTexture(const std::string& filePath, const SDL_Color& transparencyColor)
+{
+	const SdlWindow* pScreen = dynamic_cast<const SdlWindow*>(&Engine::Screen());
+	if (pScreen)
+		pTexture = pScreen->CreateTexture(filePath, transparencyColor);
+	configuration = RenderingConfiguration(pTexture.get());
+}
+
+void SdlImage::ChangeTexture(const std::string& filePath, const RenderingConfiguration& newConfiguration)
+{
+	ChangeTexture(filePath);
+	configuration = newConfiguration;
+}
 
 void SdlImage::ChangeTexture(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration)
 {

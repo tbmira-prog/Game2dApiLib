@@ -33,6 +33,8 @@ namespace engine
 
 				~SdlImage();
 
+				void ChangeTexture(const std::string& filePath, const SDL_Color& transparencyColor = SDL_Color{200, 200, 200, 0});
+				void ChangeTexture(const std::string& filePath, const RenderingConfiguration& newConfiguration);
 				void ChangeTexture(SDL_Texture* pNewTexture, const RenderingConfiguration& newConfiguration); // UNDONE Precisa desta função ou basta usar os construtores?
 
 				void Print(Screen& screen) const override;

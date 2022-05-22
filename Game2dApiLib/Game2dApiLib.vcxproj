@@ -44,7 +44,6 @@
     <ClInclude Include="src\engine\graph\Screen.h" />
     <ClInclude Include="src\engine\input\Controllable.h" />
     <ClInclude Include="src\engine\input\Input.h" />
-    <ClInclude Include="src\engine\input\InputGetter.h" />
     <ClInclude Include="src\engine\input\InputManager.h" />
     <ClInclude Include="src\engine\input\Joystick.h" />
     <ClInclude Include="src\game\Game.h" />

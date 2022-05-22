@@ -44,12 +44,17 @@ namespace engine
 			class RenderingConfiguration // TODO Melhorar acesso a essas classes, é fácil de confundir a ordem dos x, y, w, h, etc;
 			{
 			public:
-				RenderingConfiguration() {}
+				RenderingConfiguration() : renderQuad(), clip(), rotation()
+				{
+					renderQuad = { 0, 0, 0, 0 };
+					clip = { 0, 0, 0, 0 };
+				}
 
 				RenderingConfiguration(SDL_Texture* pTexture) : renderQuad(), clip(), rotation() {
 					int w = 0, h = 0;
 					SDL_QueryTexture(pTexture, NULL, NULL, &w, &h);
 					renderQuad = { 0, 0, w, h };
+					clip = {0, 0, w, h};
 				}
 
 				//RenderingConfiguration(const RenderQuad& rQ, const Clip& c, const Rotation& rt) : renderQuad(rQ), clip(c), rotation(rt) {};

@@ -22,6 +22,7 @@ SdlSoundEffect::SdlSoundEffect(const SdlSoundEffect& otherSoundEffect) : SoundEf
 SdlSoundEffect& SdlSoundEffect::operator=(const SdlSoundEffect& otherSoundEffect)
 {
 	pChunk = otherSoundEffect.pChunk;
+	return *this;
 }
 
 SdlSoundEffect::~SdlSoundEffect() {}
@@ -66,6 +67,7 @@ SdlMusic::SdlMusic(const SdlMusic& otherMusic) : Song(otherMusic), pMusic(otherM
 SdlMusic& SdlMusic::operator=(const SdlMusic& otherMusic)
 {
 	pMusic = otherMusic.pMusic;
+	return *this;
 }
 
 SdlMusic::~SdlMusic() {}

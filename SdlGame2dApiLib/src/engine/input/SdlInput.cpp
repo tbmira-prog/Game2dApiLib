@@ -5,6 +5,25 @@ SdlInput::SdlInput() : sdlEvent() {};
 
 SdlInput::SdlInput(const SDL_Event& e) : sdlEvent(e) {};
 
+SdlInput::SdlInput(const SDL_EventType& type, const SDL_Keycode& sym)
+{
+	sdlEvent.type = type; // TO_DO Erro caso este construtor seja usado errado if != KEY DOWN ou KEY UP
+	sdlEvent.key.keysym.sym = sym;
+}
+
+SdlInput::SdlInput(const SDL_EventType& type, Uint8 button, Uint8 clicks)
+{
+	sdlEvent.type = type; // TO_DO Erro caso este construtor seja usado errado if != KEY DOWN ou KEY UP
+	sdlEvent.button.button = button;
+	sdlEvent.button.clicks = clicks;
+}
+
+SdlInput::SdlInput(const SDL_EventType& type, Uint32 direction)
+{
+	sdlEvent.type = type; // TO_DO Erro caso este construtor seja usado errado if != KEY DOWN ou KEY UP
+	sdlEvent.wheel.direction = direction;
+}
+
 SdlInput::~SdlInput() {}
 
 bool SdlInput::operator==(const Input& otherInput) const
