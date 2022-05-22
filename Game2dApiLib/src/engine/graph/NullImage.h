@@ -8,10 +8,10 @@ namespace engine
 {
 	namespace graph
 	{
-		class NullImage : public Image, public util::Unique<NullImage>
+		class NullImage : public Image//, public util::Unique<NullImage>
 		{
 		public:
-			NullImage() : Image(), Unique<NullImage>() {}
+			NullImage() : Image()/*, Unique<NullImage>()*/ {}
 			~NullImage() {}
 
 			void Print(Screen&) const override {}

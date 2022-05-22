@@ -10,14 +10,14 @@ namespace engine
 	{
 		enum class InputGetMode { POOL_INPUT, WAIT_INPUT };
 
-		class Joystick : public util::Unique<Joystick>
+		class Joystick : public util::Unique<Joystick> // HACK Essa classe não precisa ser única. Como trabalhar com mais de uma ao mesmo tempo?
 		{
 		public:
 			explicit Joystick(Input& i, InputGetMode newMode = InputGetMode::POOL_INPUT);
 			virtual ~Joystick();
 
 			void GetInput(size_t timeOut_ms);
-			inline const Input& Input() const;
+			const Input& Input() const;
 		
 			inline void ChangeMode(InputGetMode newMode);
 

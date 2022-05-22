@@ -22,7 +22,7 @@ namespace engine
 			explicit InputManager(Joystick&);
 			~InputManager();
 
-			inline void GetInput(size_t timeOut_ms = 0);
+			void GetInput(size_t timeOut_ms = 1);
 
 			void HandleInput(ControllableVector) const;
 

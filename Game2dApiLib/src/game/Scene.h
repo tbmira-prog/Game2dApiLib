@@ -33,7 +33,7 @@ namespace game
 		void ChangeSceneTo(Scene*);
 		void QuitGame();
 
-		void LoadMedia();
+		virtual void LoadMedia();
 
 		ObjectVector objects;
 

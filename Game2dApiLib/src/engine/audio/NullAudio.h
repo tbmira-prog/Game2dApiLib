@@ -8,10 +8,10 @@ namespace engine
 {
 	namespace audio
 	{
-		class NullSong final : public Song, public util::Unique<NullSong>
+		class NullSong final : public Song//, public util::Unique<NullSong>
 		{
 		public:
-			NullSong() : Song(), util::Unique<NullSong>() {}
+			NullSong() : Song()/*, util::Unique<NullSong>()*/ {}
 			~NullSong() {}
 
 			bool operator==(const Song& song) const override
@@ -30,10 +30,10 @@ namespace engine
 
 		static NullSong noSong;
 
-		class NullSoundEffect final : public SoundEffect, public util::Unique<NullSoundEffect>
+		class NullSoundEffect final : public SoundEffect//, public util::Unique<NullSoundEffect>
 		{
 		public:
-			NullSoundEffect() : SoundEffect(), util::Unique<NullSoundEffect>() {}
+			NullSoundEffect() : SoundEffect()/*, util::Unique<NullSoundEffect>()*/ {}
 			~NullSoundEffect() {}
 
 			void Play(AudioPlayer&) override {}

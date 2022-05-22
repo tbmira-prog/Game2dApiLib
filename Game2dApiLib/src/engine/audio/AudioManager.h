@@ -20,7 +20,7 @@ namespace engine
 
 			void PlaySoundEffects(SoundVector);
 
-			inline void ControlMusic(Song&, const SongAction);
+			void ControlMusic(Song&, const SongAction);
 
 			inline bool Muted() const { return audioPlayer.Muted(); }
 

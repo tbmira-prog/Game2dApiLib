@@ -1,7 +1,12 @@
 #include "Scene.h"
+#include "MainController.h"
 using namespace game;
 
-Scene::Scene() : objects(), playing(false), quit(false), next(this) {}
+Scene::Scene() : objects(), playing(false), quit(false), next(this)
+{
+	mainController.SetScene(this);
+	objects.Push(mainController);
+}
 
 Scene::~Scene()
 {

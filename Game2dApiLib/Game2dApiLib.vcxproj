@@ -31,6 +31,7 @@
     <ClCompile Include="src\game\MainController.cpp" />
     <ClCompile Include="src\game\ObjectVector.cpp" />
     <ClCompile Include="src\game\Scene.cpp" />
+    <ClCompile Include="src\util\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\audio\Audio.h" />
