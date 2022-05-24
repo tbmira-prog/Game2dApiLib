@@ -2,8 +2,7 @@
 using namespace util;
 
 Timer::Timer() : running(false), paused(false), stoped(true),
-				 startTime(), pauseTime(), endTime(),
-				 runningTime(), pausedTime()
+				 startTime(), runningTime()
 {}
 
 Timer::~Timer() {}
@@ -13,11 +12,13 @@ void Timer::Start()
 	if (stoped)
 	{
 		startTime = std::chrono::system_clock::now();
+
 		stoped = false;
 		running = true;
 	}
 	else if (paused)
 	{
+		startTime = std::chrono::system_clock::now();
 
 		paused = false;
 		running = true;
@@ -28,8 +29,7 @@ void Timer::Pause()
 {
 	if (running)
 	{
-		pauseTime = std::chrono::system_clock::now();
-		runningTime = pauseTime - startTime;
+		runningTime += std::chrono::system_clock::now() - startTime;
 		running = false;
 		paused = true;
 	}
@@ -39,22 +39,44 @@ void Timer::Stop()
 {
 	if (running)
 	{
-		endTime = std::chrono::system_clock::now();
+		runningTime += std::chrono::system_clock::now() - startTime;
 		running = false;
 	}
 	else if (paused)
 	{
-		endTime = pauseTime;
 		paused = false;
 	}
 	stoped = true;
 }
 
-double Timer::GetTime(const TimeUnit& unit = TimeUnit::mS) const
+double Timer::GetTime(const TimeUnit& unit) const
 {
-	if (running)
-		return;
-	else
-		return;
+	double totalTime = running ?
+		(runningTime + std::chrono::system_clock::now() - startTime).count() :
+		runningTime.count();
 
+	return TimeTo(totalTime, unit);
+}
+
+double Timer::TimeTo(double time, const TimeUnit& unit) const
+{
+	switch (unit)
+	{
+	case TimeUnit::uS:
+		return time * 1,000,000;
+	case TimeUnit::mS:
+		return time * 1000;
+	case TimeUnit::SEC:
+		return time;
+	case TimeUnit::MIN:
+		return time / 60;
+	case TimeUnit::HOUR:
+		return time / 60 / 60;
+	case TimeUnit::DAY:
+		return time / 60 / 60 / 24;
+	case TimeUnit::MONTH:
+		return time / 60 / 60 / 24 / 30;
+	case TimeUnit::YEAR:
+		return time / 60 / 60 / 24 / 30 / 365;
+	}
 }

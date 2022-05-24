@@ -53,6 +53,7 @@
     <ClInclude Include="src\game\ObjectVector.h" />
     <ClInclude Include="src\game\Scene.h" />
     <ClInclude Include="src\util\Command.h" />
+    <ClInclude Include="src\util\Timer.h" />
     <ClInclude Include="src\util\Unique.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
