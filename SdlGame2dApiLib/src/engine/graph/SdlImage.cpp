@@ -46,8 +46,10 @@ void SdlImage::ChangeTexture(const std::string& filePath, const SDL_Color& trans
 {
 	const SdlWindow* pScreen = dynamic_cast<const SdlWindow*>(&Engine::Screen());
 	if (pScreen)
+	{
 		pTexture = pScreen->CreateTexture(filePath, transparencyColor);
-	configuration = RenderingConfiguration(pTexture.get());
+		configuration.AutoConfigure(pTexture);
+	}
 }
 
 void SdlImage::ChangeTexture(const std::string& filePath, const RenderingConfiguration& newConfiguration)
@@ -72,7 +74,9 @@ void SdlImage::Print(Screen& screen) const
 	if (pWindow != nullptr)
 	{
 		SDL_Rect clip = configuration.clip;
-		SDL_Rect renderQuad = configuration.renderQuad;
+		SDL_Rect renderQuad = { configuration.position.x, configuration.position.y,
+								configuration.dimension.w, configuration.dimension.h };
+
 		SDL_Point center = configuration.rotation.center;
 		SDL_RendererFlip flip = configuration.rotation.flip;
 

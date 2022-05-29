@@ -600,6 +600,7 @@
   <ItemGroup>
     <ClCompile Include="src\engine\audio\SdlAudio.cpp" />
     <ClCompile Include="src\engine\audio\SdlAudioPlayer.cpp" />
+    <ClCompile Include="src\engine\graph\RenderingConfiguration.cpp" />
     <ClCompile Include="src\engine\graph\SdlImage.cpp" />
     <ClCompile Include="src\engine\graph\SdlWindow.cpp" />
     <ClCompile Include="src\engine\input\SdlInput.cpp" />

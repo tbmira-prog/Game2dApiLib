@@ -1,6 +1,7 @@
 #ifndef _RENDERING_CONFIGURATION_
 #define _RENDERING_CONFIGURATION_
 
+#include <memory>
 #include <stdexcept>
 
 #include <SDL.h>
@@ -11,85 +12,64 @@ namespace engine
 	{
 		namespace sdl
 		{
-			struct RenderQuad
+			struct Dimension2D
 			{
-				RenderQuad() : renderQuad({ 0, 0,0,0 }) {}
-				RenderQuad(int x, int y, int w, int h) : renderQuad({ x, y, w, h }) {}
-
-				SDL_Rect renderQuad;
-			};
-
-			struct Clip
-			{
-				Clip() : clip({ 0, 0 }) {}
-				Clip(int x, int y, int w, int h) : clip({ x, y, w, h }) {};
-
-				SDL_Rect clip;
+				Dimension2D() : w(0), h(0) {}
+				int w, h;
 			};
 
 			struct Rotation
 			{
-				Rotation() : center({ 0, 0 }), flip(SDL_FLIP_NONE), angle(0.0) {}
-
-				Rotation(SDL_Point newCenter, SDL_RendererFlip newFlip, double newAngle) : center({ newCenter.x, newCenter.y }),
-					flip(newFlip),
-					angle(newAngle)
-				{}
+				Rotation();
+				Rotation(double newAngle, SDL_Point newCenter = { 0, 0 }, SDL_RendererFlip newFlip = SDL_RendererFlip::SDL_FLIP_NONE);
 
 				SDL_Point center;
 				SDL_RendererFlip flip;
 				double angle;
 			};
 
-			class RenderingConfiguration // TODO Melhorar acesso a essas classes, é fácil de confundir a ordem dos x, y, w, h, etc;
+			class RenderingConfiguration
 			{
 			public:
-				RenderingConfiguration() : renderQuad(), clip(), rotation()
-				{
-					renderQuad = { 0, 0, 0, 0 };
-					clip = { 0, 0, 0, 0 };
-				}
+				RenderingConfiguration();
 
-				RenderingConfiguration(SDL_Texture* pTexture) : renderQuad(), clip(), rotation() {
-					int w = 0, h = 0;
-					SDL_QueryTexture(pTexture, NULL, NULL, &w, &h);
-					renderQuad = { 0, 0, w, h };
-					clip = {0, 0, w, h};
-				}
+				RenderingConfiguration( const SDL_Point& position = { 0, 0 },
+										int width = 0, int height = 0,
+										const SDL_Rect& clip = {0, 0, 0, 0}, 
+										const Rotation& rotation = Rotation(0.0),
+										const SDL_Color& transparencyColor = { 0, 0xFF, 0xFF });
+				
+				RenderingConfiguration(SDL_Texture* pTexture, const SDL_Color& transparencyColor = { 0, 0xFF, 0xFF });
+				RenderingConfiguration(std::shared_ptr<SDL_Texture> pTexture, const SDL_Color& transparencyColor = { 0, 0xFF, 0xFF });
+				
+				RenderingConfiguration(const RenderingConfiguration&);
+				RenderingConfiguration& operator=(const RenderingConfiguration&);
 
-				//RenderingConfiguration(const RenderQuad& rQ, const Clip& c, const Rotation& rt) : renderQuad(rQ), clip(c), rotation(rt) {};
+				void AutoConfigure(SDL_Texture* pTexture);
+				void AutoConfigure(std::shared_ptr<SDL_Texture> pTexture);
 
-				/*void SetRenderQuad(const RenderQuad& r)
-				{
-					if (r.renderQuad.x < 0 || r.renderQuad.y < 0 || r.renderQuad.w < 0 || r.renderQuad.h < 0)
-						throw std::logic_error("Negatives values in renderQuad!");
+				void SetPosition(int x, int y);
+				void SetPosition(const SDL_Point& point);
+				SDL_Point Position() const;
 
-					renderQuad = r;
-				}
-				RenderQuad GetRenderQuad() const { return renderQuad; }
+				void SetDimensions(int w, int h);
+				SDL_Rect RenderQuad() const;
 
-				void SetClip(const Clip& c)
-				{
-					if (c.clip.x < 0 || c.clip.y < 0 || c.clip.w < 0 || c.clip.h < 0)
-						throw std::logic_error("Negatives values in Clip!");
+				void SetClip(int x, int y, int w, int h);
+				void SetClip(const SDL_Rect& c);
+				SDL_Rect GetClip() const;
 
-					clip = c;
-				}
-				Clip GetClip() const { return clip; }
-
-				void Rotate(const Rotation& r)
-				{
-					if (0)  // TO_DO Checagens em Set
-						throw std::logic_error("Negatives values in Clip!");
-
-					rotation = r;
-				}
+				void Rotate(const Rotation& r);
 				Rotation GetRotation() const { return rotation; }
 
-//			private:*/
-				SDL_Rect renderQuad;
+				void ChangeTransparencyCollor(const SDL_Color&);
+
+				SDL_Point position;
+				Dimension2D dimension;
 				SDL_Rect clip;
 				Rotation rotation;
+			private:
+				SDL_Color transparencyColor;
 			};
 		}
 	}
