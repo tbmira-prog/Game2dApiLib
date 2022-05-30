@@ -7,7 +7,8 @@
 
 #include <SDL.h>
 
-#include "engine/graph/Screen.h"
+#include <engine/graph/Screen.h>
+
 namespace engine
 {
 	namespace graph

@@ -10,6 +10,7 @@
 #include <iostream>
 
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 #include "SdlWindow.h"
 #include "SdlWindowException.h"
@@ -46,6 +47,9 @@ SdlWindow::SdlWindow(int width, int height, std::string title, bool fullScreen) 
 
 		if (!IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG))
 			throw FailedToInitiateSDLImage();
+
+		if (TTF_Init() == -1)
+			throw FailedToInitiateSdlTtf();
 	}
 	catch (const std::exception& err)
 	{
