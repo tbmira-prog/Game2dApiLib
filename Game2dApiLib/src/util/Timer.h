@@ -19,13 +19,15 @@ namespace util
 		void Pause();
 		void Stop();
 
-		double GetTime(const TimeUnit& unit = TimeUnit::mS) const;
+		double GetTime(const TimeUnit& unit = TimeUnit::SEC) const;
 
 	private:
-		std::chrono::time_point<std::chrono::system_clock> startTime, pauseTime, endTime;
-		std::chrono::duration<double> runningTime, pausedTime;
+		std::chrono::time_point<std::chrono::system_clock> startTime;
+		std::chrono::duration<double> runningTime;
 
 		bool running, paused, stoped;
+
+		double TimeTo(double time, const TimeUnit& unit) const;
 	};
 }
 
