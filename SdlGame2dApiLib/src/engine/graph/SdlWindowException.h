@@ -9,7 +9,7 @@ namespace engine
 	{
 		namespace sdl
 		{
-
+			// TODO Melhorar mensagens de erro
 			struct FailedToCreateWindow : public std::exception
 			{
 				const char* what() const override { return "Failed to create window!\n"; }
@@ -31,6 +31,11 @@ namespace engine
 			};
 
 			struct FailedToInitiateSDLImage : public std::exception
+			{
+				const char* what() const override { return "Failed to create window!\n"; }
+			};
+
+			struct FailedToInitiateSdlTtf : public std::exception
 			{
 				const char* what() const override { return "Failed to create window!\n"; }
 			};

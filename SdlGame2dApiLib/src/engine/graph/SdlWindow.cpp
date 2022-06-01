@@ -10,6 +10,7 @@
 #include <iostream>
 
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 #include "SdlWindow.h"
 #include "SdlWindowException.h"
@@ -46,6 +47,9 @@ SdlWindow::SdlWindow(int width, int height, std::string title, bool fullScreen) 
 
 		if (!IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG))
 			throw FailedToInitiateSDLImage();
+
+		if (TTF_Init() == -1)
+			throw FailedToInitiateSdlTtf();
 	}
 	catch (const std::exception& err)
 	{
@@ -111,6 +115,22 @@ std::shared_ptr<SDL_Texture> SdlWindow::CreateTexture(std::string filePath, cons
 	}
 	else
 		throw FailedToCreateTexture();
+}
+
+std::shared_ptr<SDL_Texture> SdlWindow::CreateTexture(SDL_Surface* pSurface) const
+{
+	SDL_Texture* newTexture = SDL_CreateTextureFromSurface(pRenderer, pSurface);
+	
+	if (newTexture)
+	{
+		std::shared_ptr<SDL_Texture> pTexture(newTexture, DeleteTexture);
+		return pTexture;
+	}
+	else
+	{
+		SDL_FreeSurface(pSurface);
+		throw FailedToCreateTexture();
+	}
 }
 
 size_t SdlWindow::Width() const

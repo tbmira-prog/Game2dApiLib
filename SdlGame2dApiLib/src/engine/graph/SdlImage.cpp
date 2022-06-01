@@ -67,6 +67,14 @@ void SdlImage::ChangeTexture(SDL_Texture* pNewTexture, const RenderingConfigurat
 	configuration = newConfiguration;
 }
 
+void SdlImage::ChangeTexture(SDL_Surface* pSurface)
+{
+	const SdlWindow* pScreen = dynamic_cast<const SdlWindow*>(&Engine::Screen());
+	if (pScreen)
+		pTexture = pScreen->CreateTexture(pSurface);
+	configuration = RenderingConfiguration(pTexture.get());
+}
+
 void SdlImage::Print(Screen& screen) const
 {
 	SdlWindow* pWindow = dynamic_cast<SdlWindow*>(&screen);
