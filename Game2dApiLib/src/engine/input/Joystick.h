@@ -13,23 +13,27 @@ namespace engine
 		class Joystick : public util::Unique<Joystick> // HACK Essa classe não precisa ser única. Como trabalhar com mais de uma ao mesmo tempo?
 		{
 		public:
-			explicit Joystick(Input& i, InputGetMode newMode = InputGetMode::POOL_INPUT);
+			explicit Joystick(engine::input::Input& i, const InputGetMode& newMode, size_t timeOut_ms);
 			virtual ~Joystick();
 
-			void GetInput(size_t timeOut_ms);
+			void GetInput();
 			const Input& Input() const;
 		
 			inline void ChangeMode(InputGetMode newMode);
 
+			void SetTimeOut(size_t newTimeOut) { timeOut_ms = newTimeOut; }
+			size_t TimeOut() const { return timeOut_ms; }
+
 		protected:
 			input::Input& input;
 			InputGetMode mode;
+			size_t timeOut_ms;
 
 		private:
 			virtual void PoolInput() = 0;
 			virtual void WaitInput(size_t timeOut_ms) = 0;
 
-			Joystick(const Joystick&) = delete;
+			Joystick(const Joystick&) = delete; // UNDONE Mais de um controle em paralelo
 			Joystick& operator=(const Joystick&) = delete;
 		};
 	}

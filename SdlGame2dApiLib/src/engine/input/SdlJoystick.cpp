@@ -3,7 +3,7 @@
 
 using namespace engine::input::sdl;
 
-SdlJoystick::SdlJoystick(InputGetMode newMode) : sdlInput(), Joystick(sdlInput, newMode) {}; // TO_DO Construtor primeiro constroi classe base, aqui está tendo que acontecer o contrário
+SdlJoystick::SdlJoystick(InputGetMode newMode, size_t timeOut_ms) : sdlInput(), Joystick(sdlInput, newMode, timeOut_ms) {}; // TO_DO Construtor primeiro constroi classe base, aqui está tendo que acontecer o contrário
 
 SdlJoystick::~SdlJoystick() {}
 

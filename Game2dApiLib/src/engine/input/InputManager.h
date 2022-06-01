@@ -22,9 +22,9 @@ namespace engine
 			explicit InputManager(Joystick&);
 			~InputManager();
 
-			void GetInput(size_t timeOut_ms = 1);
+			void GetInput();
 
-			void HandleInput(ControllableVector) const;
+			void HandleInput(ControllableVector&) const;
 
 		private:
 			Joystick& inputGetter;

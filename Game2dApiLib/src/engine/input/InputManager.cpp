@@ -5,12 +5,12 @@ InputManager::InputManager(Joystick& newJoystick) : Unique<InputManager>(), inpu
 
 InputManager::~InputManager() {}
 
-void InputManager::GetInput(size_t timeOut_ms)
+void InputManager::GetInput()
 {
-	inputGetter.GetInput(timeOut_ms);
+	inputGetter.GetInput();
 }
 
-void InputManager::HandleInput(ControllableVector controllables) const
+void InputManager::HandleInput(ControllableVector& controllables) const
 {
 	for (auto controllable : controllables)
 		controllable.get().HandleInput(inputGetter.Input()); // TO_DO Voltar Input para algum valor padrão? Se ele reter o último valor pode causar erros no modo poll

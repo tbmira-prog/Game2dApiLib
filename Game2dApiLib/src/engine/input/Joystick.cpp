@@ -1,11 +1,13 @@
 #include "Joystick.h"
 using namespace engine::input;
 
-Joystick::Joystick(engine::input::Input& i, InputGetMode newMode) : Unique<Joystick>(), input(i), mode(newMode) {}
+Joystick::Joystick(engine::input::Input& i, const InputGetMode& newMode, size_t timeOut_ms) :
+	Unique<Joystick>(), input(i), mode(newMode), timeOut_ms(timeOut_ms)
+{}
 
 Joystick::~Joystick() {}
 
-void Joystick::GetInput(size_t timeOut_ms)
+void Joystick::GetInput()
 {
 	switch (mode)
 	{

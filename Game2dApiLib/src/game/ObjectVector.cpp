@@ -16,6 +16,21 @@ void ObjectVector::Push(GameObject& object)
 	sounds.push_back(object.soundEffect);
 }
 
+void ObjectVector::Push(engine::graph::Image& image)
+{
+	images.push_back(image);
+}
+
+void ObjectVector::Push(engine::audio::SoundEffect& chunk)
+{
+	sounds.push_back(chunk);
+}
+
+void ObjectVector::Push(engine::audio::Song& newSong)
+{
+	song = newSong;
+}
+
 void ObjectVector::Pop()
 {
 	images.pop_back();

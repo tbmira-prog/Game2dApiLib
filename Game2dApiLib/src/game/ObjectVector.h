@@ -15,6 +15,9 @@ namespace game {
 		~ObjectVector();
 
 		void Push(GameObject& object);
+		void Push(engine::graph::Image&);
+		void Push(engine::audio::SoundEffect&);
+		void Push(engine::audio::Song&);
 		
 		void Pop();
 		void Remove(const GameObject& object);
@@ -22,7 +25,7 @@ namespace game {
 		void Clear();
 
 		inline const engine::graph::ImageVector& Images() { return images; } // TO_DO Impedir que modifiquem a ordem dos vetores fora de Game
-		inline const engine::input::ControllableVector& Controllables() { return controllables; } // TO_DO Retornar const & ou só & ?
+		inline engine::input::ControllableVector& Controllables() { return controllables; } // TO_DO Retornar const & ou só & ?
 		inline const engine::audio::SoundVector& Sounds() { return sounds; }
 		inline engine::audio::Song& CurrentSong() { return song; }
 		inline const engine::audio::SongAction SongAction() { return songAction; }

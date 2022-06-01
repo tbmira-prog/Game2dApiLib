@@ -21,7 +21,7 @@ namespace game
 		virtual void Logic() = 0;
 		
 		inline const engine::graph::ImageVector& Images() { return objects.Images(); }
-		inline const engine::input::ControllableVector& Controllables() { return objects.Controllables(); }
+		inline engine::input::ControllableVector& Controllables() { return objects.Controllables(); }
 		inline const engine::audio::SoundVector& Sounds() { return objects.Sounds(); }
 		inline engine::audio::Song& CurrentSong() { return objects.CurrentSong(); }
 		inline const engine::audio::SongAction SongAction() { return objects.SongAction(); }
