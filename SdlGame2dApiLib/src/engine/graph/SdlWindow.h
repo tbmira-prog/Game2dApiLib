@@ -28,6 +28,7 @@ namespace engine
 
 				std::shared_ptr<SDL_Texture> CreateTexture(std::string filePath) const;
 				std::shared_ptr<SDL_Texture> CreateTexture(std::string filePath, const SDL_Color& transparencyColor) const;
+				std::shared_ptr<SDL_Texture> CreateTexture(SDL_Surface* pSurface) const;
 
 				size_t Width() const override;
 				size_t Height() const override;

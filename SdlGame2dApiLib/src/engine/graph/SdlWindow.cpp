@@ -117,6 +117,22 @@ std::shared_ptr<SDL_Texture> SdlWindow::CreateTexture(std::string filePath, cons
 		throw FailedToCreateTexture();
 }
 
+std::shared_ptr<SDL_Texture> SdlWindow::CreateTexture(SDL_Surface* pSurface) const
+{
+	SDL_Texture* newTexture = SDL_CreateTextureFromSurface(pRenderer, pSurface);
+	
+	if (newTexture)
+	{
+		std::shared_ptr<SDL_Texture> pTexture(newTexture, DeleteTexture);
+		return pTexture;
+	}
+	else
+	{
+		SDL_FreeSurface(pSurface);
+		throw FailedToCreateTexture();
+	}
+}
+
 size_t SdlWindow::Width() const
 {
 	int w = 0, h = 0;
