@@ -45,6 +45,11 @@ namespace engine
 
 			void DeleteFont(TTF_Font* pFont);
 
+			struct FailToSetFont : public std::exception
+			{
+				const char* what() const override { return "Fail to set the Font to the Text!\n"; }
+			};
+
 			struct FailToCreateSurface : public std::exception
 			{
 				const char* what() const override { return "Fail to create Surface in Texture changing!\n"; }

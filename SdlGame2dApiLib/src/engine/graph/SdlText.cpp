@@ -29,6 +29,7 @@ SdlText::SdlText(std::shared_ptr<TTF_Font> pNewFont, const std::string& text) : 
 
 SdlText::SdlText(const std::string& fontFilePath, int fontSize, const SDL_Color& textColor, const std::string& text) : pFont(), text(text), textColor(textColor)
 {
+	ChangeFont(fontFilePath, fontSize);
 	SetText(text);
 }
 
@@ -38,6 +39,9 @@ SdlText::~SdlText()
 void SdlText::SetText(const std::string& newText)
 {
 	this->text = newText;
+
+	if (text == "")
+		return;
 
     SDL_Surface* pTextSurface = TTF_RenderText_Solid(pFont.get(), text.c_str(), textColor);
     if (pTextSurface == NULL)
@@ -70,7 +74,7 @@ void SdlText::ChangeFont(const std::string& fontFilePath, int fontSize)
 {
 	TTF_Font* pNewFont = TTF_OpenFont(fontFilePath.c_str(), fontSize);
 	if (!pNewFont)
-		throw;
+		throw FailToSetFont();
 
 	pFont.reset(pNewFont, DeleteFont);
 }
