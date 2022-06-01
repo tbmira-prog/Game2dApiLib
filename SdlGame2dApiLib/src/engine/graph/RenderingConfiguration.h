@@ -14,7 +14,7 @@ namespace engine
 		{
 			struct Dimension2D
 			{
-				Dimension2D() : w(0), h(0) {}
+				Dimension2D(int w = 0, int h = 0) : w(w), h(h) {}
 				int w, h;
 			};
 
@@ -28,48 +28,42 @@ namespace engine
 				double angle;
 			};
 
-			class RenderingConfiguration
+			struct RenderingConfiguration
 			{
-			public:
 				RenderingConfiguration();
 
-				RenderingConfiguration( const SDL_Point& position = { 0, 0 },
-										int width = 0, int height = 0,
-										const SDL_Rect& clip = {0, 0, 0, 0}, 
-										const Rotation& rotation = Rotation(0.0),
-										const SDL_Color& transparencyColor = { 0, 0xFF, 0xFF });
+				RenderingConfiguration( const SDL_Point& position,
+										const Dimension2D& dimension,
+										const SDL_Rect& clip, 
+										const Rotation& rotation = Rotation(0.0) );
 				
-				RenderingConfiguration(SDL_Texture* pTexture, const SDL_Color& transparencyColor = { 0, 0xFF, 0xFF });
-				RenderingConfiguration(std::shared_ptr<SDL_Texture> pTexture, const SDL_Color& transparencyColor = { 0, 0xFF, 0xFF });
+				RenderingConfiguration(SDL_Texture* pTexture);
+				RenderingConfiguration(const std::shared_ptr<SDL_Texture>& pTexture);
 				
-				RenderingConfiguration(const RenderingConfiguration&);
-				RenderingConfiguration& operator=(const RenderingConfiguration&);
+				RenderingConfiguration(const RenderingConfiguration&) = default;
+				RenderingConfiguration& operator=(const RenderingConfiguration&) = default;
 
 				void AutoConfigure(SDL_Texture* pTexture);
-				void AutoConfigure(std::shared_ptr<SDL_Texture> pTexture);
+				void AutoConfigure(const std::shared_ptr<SDL_Texture>& pTexture);
 
 				void SetPosition(int x, int y);
 				void SetPosition(const SDL_Point& point);
 				SDL_Point Position() const;
 
 				void SetDimensions(int w, int h);
-				SDL_Rect RenderQuad() const;
+				Dimension2D Dimension() const;
 
 				void SetClip(int x, int y, int w, int h);
 				void SetClip(const SDL_Rect& c);
 				SDL_Rect GetClip() const;
 
 				void Rotate(const Rotation& r);
-				Rotation GetRotation() const { return rotation; }
-
-				void ChangeTransparencyCollor(const SDL_Color&);
+				Rotation GetRotation() const;
 
 				SDL_Point position;
 				Dimension2D dimension;
 				SDL_Rect clip;
 				Rotation rotation;
-			private:
-				SDL_Color transparencyColor;
 			};
 		}
 	}

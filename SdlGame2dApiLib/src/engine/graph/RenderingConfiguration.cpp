@@ -10,26 +10,22 @@ Rotation::Rotation(double newAngle, SDL_Point newCenter, SDL_RendererFlip newFli
 {}
 
 RenderingConfiguration::RenderingConfiguration() :
-	renderQuad({ 0, 0, 0, 0 }), clip({ 0, 0, 0, 0 }), rotation(),
-	transparencyColor({ 0, 0xFF, 0xFF })
+	position({ 0, 0 }), dimension(), clip({ 0, 0, 0, 0 }), rotation()
 {}
 
-RenderingConfiguration::RenderingConfiguration(const SDL_Point& position, int width, int height,
-	const SDL_Rect& clip, const Rotation& rotation, const SDL_Color& transparencyColor) :
-	renderQuad({position.x, position.y, width, height}), clip(clip), rotation(rotation),
-	transparencyColor(transparencyColor)
+RenderingConfiguration::RenderingConfiguration(const SDL_Point& position, const Dimension2D& dimension,
+	const SDL_Rect& clip, const Rotation& rotation) :
+	position(position), dimension(dimension), clip(clip), rotation(rotation)
 {}
 
-RenderingConfiguration::RenderingConfiguration(SDL_Texture* pTexture, const SDL_Color& transparencyColor)
-	: renderQuad(), clip(), rotation(),
-	transparencyColor(transparencyColor)
+RenderingConfiguration::RenderingConfiguration(SDL_Texture* pTexture)
+	: position({ 0, 0 }), dimension(), clip(), rotation()
 {
 	AutoConfigure(pTexture);
 }
 
-RenderingConfiguration::RenderingConfiguration(std::shared_ptr<SDL_Texture> pTexture, const SDL_Color& transparencyColor)
-	: renderQuad(), clip(), rotation(),
-	transparencyColor(transparencyColor)
+RenderingConfiguration::RenderingConfiguration(const std::shared_ptr<SDL_Texture>& pTexture)
+	: position({ 0, 0 }), dimension(), clip(), rotation()
 {
 	AutoConfigure(pTexture);
 }
@@ -38,41 +34,43 @@ void RenderingConfiguration::AutoConfigure(SDL_Texture* pTexture)
 {
 	int w = 0, h = 0;
 	SDL_QueryTexture(pTexture, NULL, NULL, &w, &h);
-	renderQuad = { 0, 0, w, h };
+	position = { 0, 0 };
+	dimension = { w, h };
 	clip = { 0, 0, w, h };
 }
 
-void RenderingConfiguration::AutoConfigure(std::shared_ptr<SDL_Texture> pTexture)
+void RenderingConfiguration::AutoConfigure(const std::shared_ptr<SDL_Texture>& pTexture)
 {
 	AutoConfigure(pTexture.get());
 }
 
 void RenderingConfiguration::SetPosition(int x, int y)
 {
-	renderQuad.x = x;
-	renderQuad.y = y;
+	position.x = x;
+	position.y = y;
 }
 
 void RenderingConfiguration::SetPosition(const SDL_Point& p)
 {
-	renderQuad.x = p.x;
-	renderQuad.y = p.y;
+	position.x = p.x;
+	position.y = p.y;
 }
 
 SDL_Point RenderingConfiguration::Position() const
 {
-	return { renderQuad.x, renderQuad.y };
+	return position;
 }
 
 void RenderingConfiguration::SetDimensions(int w, int h)
 {
 	if (w < 0 || h < 0)
 		throw std::logic_error("Invalid values to image's dimension!");
+	dimension = { w, h };
 }
 
-SDL_Rect RenderingConfiguration::RenderQuad() const
+Dimension2D RenderingConfiguration::Dimension() const
 {
-	return renderQuad;
+	return dimension;
 }
 
 void RenderingConfiguration::SetClip(int x, int y, int w, int h)
@@ -82,8 +80,8 @@ void RenderingConfiguration::SetClip(int x, int y, int w, int h)
 
 void RenderingConfiguration::SetClip(const SDL_Rect& c)
 {
-	if (clip.x < 0 || clip.y < 0 || clip.w < 0 || clip.h < 0)
-		throw std::logic_error("Negatives values in Clip!");
+	if (c.x < 0 || c.y < 0 || c.w < 0 || c.h < 0)
+		throw std::logic_error("Try to pass Negatives values to Image Clip!");
 
 	clip = c;
 }
@@ -95,7 +93,7 @@ void RenderingConfiguration::Rotate(const Rotation& r)
 	rotation = r;
 }
 
-Rotation  RenderingConfiguration::GetRotation() const
+Rotation RenderingConfiguration::GetRotation() const
 {
 	return rotation;
 }
