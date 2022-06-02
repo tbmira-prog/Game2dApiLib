@@ -52,7 +52,7 @@ void Timer::Stop()
 double Timer::GetTime(const TimeUnit& unit) const
 {
 	double totalTime = running ?
-		(runningTime + std::chrono::system_clock::now() - startTime).count() :
+		(runningTime + std::chrono::system_clock::now() - startTime).count()/10000000 : // HACK Timer retorna unidades diferentes se esta pausado ou parado. Esse tem que retornar segundos
 		runningTime.count();
 
 	return TimeTo(totalTime, unit);

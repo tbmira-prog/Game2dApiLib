@@ -260,12 +260,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include;C:\dev\vclib\SDL2_ttf-2.0.20\include</IncludePath>
+    <IncludePath>$(SolutionDir)SdlGame2dApiLib\src;$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include;C:\dev\vclib\SDL2_ttf-2.0.20\include</IncludePath>
     <LibraryPath>C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2_ttf-2.0.20\lib\x86;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include;C:\dev\vclib\SDL2_ttf-2.0.20\include</IncludePath>
+    <IncludePath>$(SolutionDir)SdlGame2dApiLib\src;$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include;C:\dev\vclib\SDL2_ttf-2.0.20\include</IncludePath>
     <LibraryPath>C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2_ttf-2.0.20\lib\x86;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -288,12 +288,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include;C:\dev\vclib\SDL2_ttf-2.0.20\include</IncludePath>
+    <IncludePath>$(SolutionDir)SdlGame2dApiLib\src;$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include;C:\dev\vclib\SDL2_ttf-2.0.20\include</IncludePath>
     <LibraryPath>C:\dev\vclib\SDL2_ttf-2.0.20\lib\x64;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include;C:\dev\vclib\SDL2_ttf-2.0.20\include</IncludePath>
+    <IncludePath>$(SolutionDir)SdlGame2dApiLib\src;$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include;C:\dev\vclib\SDL2_ttf-2.0.20\include</IncludePath>
     <LibraryPath>C:\dev\vclib\SDL2_ttf-2.0.20\lib\x64;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -606,6 +606,7 @@
     <ClCompile Include="src\engine\graph\SdlWindow.cpp" />
     <ClCompile Include="src\engine\input\SdlInput.cpp" />
     <ClCompile Include="src\engine\input\SdlJoystick.cpp" />
+    <ClCompile Include="src\game\objects\SdlButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\audio\SdlAudio.h" />

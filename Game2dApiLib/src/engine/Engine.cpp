@@ -3,15 +3,15 @@ using namespace engine;
 
 graph::Screen* Engine::pScreen = nullptr;
 
-Engine::Engine(game::Game& newGame, graph::Screen& screen, input::Joystick& inputGetter, audio::AudioPlayer& audioPlayer) :
-	Unique<Engine>(), game(newGame), graphManager(screen), inputManager(inputGetter), audioManager(audioPlayer)
+Engine::Engine(graph::Screen& screen, input::Joystick& inputGetter, audio::AudioPlayer& audioPlayer) :
+	Unique<Engine>(), graphManager(screen), inputManager(inputGetter), audioManager(audioPlayer)
 {
 	pScreen = &screen;
 }
 
 Engine::~Engine() {}
 
-void Engine::Run()
+void Engine::Run(game::Game& game)
 {
 	while (!game.pCurrentScene->Quit()) // HACK Exception safety: try and catch
 	{

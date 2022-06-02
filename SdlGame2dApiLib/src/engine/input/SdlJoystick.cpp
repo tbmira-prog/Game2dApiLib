@@ -7,7 +7,7 @@ SdlJoystick::SdlJoystick(InputGetMode newMode, size_t timeOut_ms) : sdlInput(), 
 
 SdlJoystick::~SdlJoystick() {}
 
-void SdlJoystick::PoolInput()
+void SdlJoystick::PollInput()
 {
 	sdlInput.sdlEvent.type = SDL_FIRSTEVENT;
 

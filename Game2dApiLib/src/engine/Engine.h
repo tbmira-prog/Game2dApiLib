@@ -17,10 +17,10 @@ namespace engine
 	class Engine : public util::Unique<Engine>
 	{
 	public:
-		explicit Engine(game::Game&, graph::Screen&, input::Joystick&, audio::AudioPlayer&);
+		explicit Engine(graph::Screen&, input::Joystick&, audio::AudioPlayer&);
 		~Engine();
 
-		void Run();
+		void Run(game::Game& game);
 		
 		static const graph::Screen& Screen();
 
@@ -28,8 +28,6 @@ namespace engine
 		graph::GraphManager graphManager;
 		input::InputManager inputManager;
 		audio::AudioManager audioManager;
-
-		game::Game& game;
 
 		static graph::Screen* pScreen;
 

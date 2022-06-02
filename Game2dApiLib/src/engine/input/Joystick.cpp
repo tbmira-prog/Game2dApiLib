@@ -11,14 +11,14 @@ void Joystick::GetInput()
 {
 	switch (mode)
 	{
-	case InputGetMode::POOL_INPUT:
-		PoolInput();
+	case InputGetMode::POLL_INPUT:
+		PollInput();
 		break;
 	case InputGetMode::WAIT_INPUT:
 		WaitInput(timeOut_ms);
 		break;
 	default:
-		PoolInput();
+		PollInput();
 	}
 }
 

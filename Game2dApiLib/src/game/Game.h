@@ -3,16 +3,21 @@
 
 #include <memory>
 
-#include "util/Unique.h"
+#include <util/Unique.h>
 
 #include "Scene.h"
+
+namespace engine
+{
+	class Engine;
+}
 
 namespace game
 {
 	class Game : public util::Unique<Game>
 	{
 	public:
-		Game(Scene*);
+		Game(engine::Engine& engine, Scene*);
 		virtual ~Game();
 
 	private:

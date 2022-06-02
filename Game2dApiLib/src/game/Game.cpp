@@ -1,7 +1,7 @@
 #include "Game.h"
 using namespace game;
 
-Game::Game(Scene* pFirstScene) : Unique<Game>(), pCurrentScene(pFirstScene)
+Game::Game(engine::Engine& engine, Scene* pFirstScene) : Unique<Game>(), pCurrentScene(pFirstScene)
 {}
 
 Game::~Game()

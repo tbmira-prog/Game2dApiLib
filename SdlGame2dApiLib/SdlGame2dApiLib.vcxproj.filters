@@ -39,6 +39,9 @@
     <ClCompile Include="src\engine\graph\SdlText.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\objects\SdlButton.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\audio\SdlAudio.h">
