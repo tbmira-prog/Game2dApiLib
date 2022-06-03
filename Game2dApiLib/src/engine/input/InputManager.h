@@ -16,7 +16,7 @@ namespace engine
 	{
 		typedef std::vector< std::reference_wrapper<Controllable>> ControllableVector;
 
-		class InputManager final : public util::Unique<InputManager> // HACK Planejar tratamento de eventos que não são inputs, por exemplo fechar programa
+		class InputManager final : public util::Unique<InputManager>
 		{
 		public:
 			explicit InputManager(Joystick&);

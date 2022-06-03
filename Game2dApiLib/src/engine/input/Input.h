@@ -16,7 +16,7 @@ namespace engine
 
 			virtual bool operator==(const Input&) const = 0; // UNDONE Declarar função fora da classe? Livro de C++ em um dos capítulos lá fala disso
 
-			virtual bool Quit() const = 0; // HACK Criar classes Controller que irá checar estas funções
+			virtual bool Quit() const = 0;
 			virtual bool Undo() const { return false; }
 			virtual bool Redo() const { return false; }
 		};

@@ -16,7 +16,7 @@ void ObjectVector::Push(GameObject& object)
 	sounds.push_back(object.soundEffect);
 }
 
-void ObjectVector::Push(engine::graph::Image& image)
+void ObjectVector::Push(engine::graph::Image& image) // HACK Essas funções que não adicionam objetos completos podem bugar o pop
 {
 	images.push_back(image);
 }
