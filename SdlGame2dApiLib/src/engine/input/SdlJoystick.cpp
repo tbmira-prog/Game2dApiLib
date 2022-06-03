@@ -20,14 +20,3 @@ void SdlJoystick :: WaitInput(size_t timeOut_ms)
 
 	SDL_WaitEventTimeout(&sdlInput.sdlEvent, timeOut_ms);
 }
-/*
-void SdlJoystick::SetInput(engine::input::Input& i)
-{
-	SdlInput* pInput = dynamic_cast<SdlInput*>(&i);
-
-	if (pInput != nullptr)
-		pInput->sdlEvent = sdlInput.sdlEvent;
-	else
-		pInput->sdlEvent.type = SDL_FIRSTEVENT; // TODO Evento quando nada foi apertado
-}
-*/
