@@ -71,6 +71,8 @@ namespace engine
 				void Pause(AudioPlayer&) override;
 				void Stop(AudioPlayer&) override;
 
+				bool operator==(const Song&) const override;
+
 			private:
 				std::shared_ptr<Mix_Music> pMusic;
 			};

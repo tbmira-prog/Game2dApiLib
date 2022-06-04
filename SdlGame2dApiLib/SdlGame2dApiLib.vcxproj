@@ -607,6 +607,7 @@
     <ClCompile Include="src\engine\input\SdlInput.cpp" />
     <ClCompile Include="src\engine\input\SdlJoystick.cpp" />
     <ClCompile Include="src\game\objects\SdlButton.cpp" />
+    <ClCompile Include="src\game\SdlGameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine\audio\SdlAudio.h" />

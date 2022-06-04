@@ -111,3 +111,15 @@ void SdlMusic::Stop(AudioPlayer& audioPlayer)
 		Mix_HaltMusic();
 	playing = false;
 }
+
+bool SdlMusic::operator==(const Song& otherMusic) const
+{
+	const SdlMusic* pSdlMusic = dynamic_cast<const SdlMusic*>(&otherMusic);
+
+	if (pSdlMusic)
+	{
+		return this->pMusic == pSdlMusic->pMusic;
+	}
+
+	return false;
+}

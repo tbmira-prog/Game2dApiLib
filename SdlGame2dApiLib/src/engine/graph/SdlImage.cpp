@@ -6,6 +6,11 @@ using namespace engine::graph::sdl;
 
 SdlImage::SdlImage() : Image(), pTexture(), configuration() {}
 
+SdlImage::SdlImage(const std::string& filePath, const SDL_Color& transparencyColor) : Image(), configuration()
+{
+	ChangeTexture(filePath, transparencyColor);
+}
+
 SdlImage::SdlImage(SDL_Texture* pNewTexture) : Image(), pTexture(pNewTexture, DeleteTexture), configuration(pNewTexture) {}
 
 SdlImage::SdlImage(std::shared_ptr<SDL_Texture> pNewTexture) : Image(), pTexture(pNewTexture), configuration(&(*pNewTexture))

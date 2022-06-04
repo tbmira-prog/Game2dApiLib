@@ -22,6 +22,7 @@ namespace engine
 			{
 			public:
 				SdlImage();
+				SdlImage(const std::string& filePath, const SDL_Color& transparencyColor = SDL_Color{ 200, 200, 200, 0 });
 				explicit SdlImage(SDL_Texture* pNewTexture);
 				explicit SdlImage(std::shared_ptr<SDL_Texture> pNewTexture);
 
