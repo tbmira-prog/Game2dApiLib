@@ -11,6 +11,7 @@ SdlGameObject::~SdlGameObject()
 void SdlGameObject::SetImage(const engine::graph::sdl::SdlImage& newImage)
 {
 	sdlImage = newImage;
+	image = sdlImage;
 }
 
 void SdlGameObject::SetSoundEffect(const engine::audio::sdl::SdlSoundEffect& newSoundEffect)

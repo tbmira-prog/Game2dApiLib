@@ -8,7 +8,7 @@ namespace engine
 {
 	namespace input
 	{
-		enum class InputGetMode { POLL_INPUT, WAIT_INPUT };
+		enum class InputGetMode { POLL_INPUT, WAIT_INPUT }; // TODO Trocar só por POOL ou WAIT
 
 		class Joystick : public util::Unique<Joystick> // UNDONE Essa classe não precisa ser única. Como trabalhar com mais de uma ao mesmo tempo?
 		{

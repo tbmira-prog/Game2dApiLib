@@ -31,8 +31,9 @@ SdlWindow::SdlWindow(int width, int height, std::string title, bool fullScreen) 
 {
 	try
 	{
+#ifndef _DEBUG
 		HideConsole();
-
+#endif
 		if (SDL_Init(SDL_INIT_VIDEO) < 0) // TO_DO Será possível iniciar o SDL com Audio em AudioPlayer? Ou dever ser feito tudo nesta classe?
 			throw  FailedToInitializateSDL();
 

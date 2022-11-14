@@ -1,5 +1,6 @@
 #include "Engine.h"
 using namespace engine;
+#include <iostream>
 
 graph::Screen* Engine::pScreen = nullptr;
 
@@ -13,7 +14,7 @@ Engine::~Engine() {}
 
 void Engine::Run(game::Game& game)
 {
-	while (!game.pCurrentScene->Quit()) // HACK Exception safety: try and catch
+	while (!game.pCurrentScene->Quit()) // HACK Melhorar logs
 	{
 		try
 		{
@@ -34,8 +35,10 @@ void Engine::Run(game::Game& game)
 
 			game.ChangeScene();
 		}
-		catch (...)
+		catch ( const std::exception& e )
 		{
+			std::cerr << e.what() << std::endl;
+			//std::cin.get();
 			break;
 		}
 	}

@@ -290,11 +290,13 @@
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)SdlGame2dApiLib\src;$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include;C:\dev\vclib\SDL2_ttf-2.0.20\include</IncludePath>
     <LibraryPath>C:\dev\vclib\SDL2_ttf-2.0.20\lib\x64;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\$(Plataform)$(Configuration)\$(Target)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)SdlGame2dApiLib\src;$(SolutionDir)Game2dApiLib\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\dev\vclib\SDL2-2.0.20\include;C:\dev\vclib\SDL2_image-2.0.5\include;C:\dev\vclib\SDL2_mixer-2.0.4\include;C:\dev\vclib\SDL2_ttf-2.0.20\include</IncludePath>
     <LibraryPath>C:\dev\vclib\SDL2_ttf-2.0.20\lib\x64;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x86;C:\dev\vclib\SDL2_mixer-2.0.4\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x64;C:\dev\vclib\SDL2-2.0.20\lib\x86;C:\dev\vclib\SDL2-2.0.20\lib\x64;C:\dev\vclib\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\$(Plataform)$(Configuration)\$(Target)</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -592,11 +594,6 @@
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Game2dApiLib\Game2dApiLib.vcxproj">
-      <Project>{28de3f9c-467e-4e46-abde-78153c43c79e}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\audio\SdlAudio.cpp" />
     <ClCompile Include="src\engine\audio\SdlAudioPlayer.cpp" />
